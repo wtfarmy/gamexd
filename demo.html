@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GameXD</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: white;
+    }
+
+    header {
+      background-color: #222;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    #loginBtn {
+      background-color: #444;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    main {
+      padding: 100px 20px 20px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100%;
+      background: #1a1a1a;
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 2000;
+      color: white;
+    }
+
+    .sidebar.show {
+      left: 0;
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sidebar-content {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sidebar-content a,
+    .sidebar-content button {
+      color: white;
+      background: none;
+      border: none;
+      font-size: 16px;
+      text-align: left;
+      padding: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .sidebar-content a:hover,
+    .sidebar-content button:hover {
+      background: #333;
+    }
+
+    #closeSidebar {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script>
+    // Firebase Config (REPLACE THIS)
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">GameXD</div>
+    <div>
+      <button id="loginBtn"><b>Login</b></button>
+      <img id="userPic" class="profile-pic" style="display:none;" />
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h1>Welcome to GameXD</h1>
+    <p>Explore tournaments, compete and win!</p>
+  </main>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <img id="sidebarPic" class="profile-pic" style="width: 60px; height: 60px;" />
+      <div>
+        <p id="sidebarName" style="font-weight: bold;"></p>
+        <p id="sidebarEmail" style="font-size: 12px;"></p>
+      </div>
+      <button id="closeSidebar">&times;</button>
+    </div>
+    <div class="sidebar-content">
+      <a href="#">🏆 My Tournaments</a>
+      <a href="#">🛒 My Orders</a>
+      <a href="#">❓ Help</a>
+      <button id="logoutBtnSidebar">🔓 Logout</button>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const logoutBtn = document.getElementById('logoutBtnSidebar');
+    const sidebar = document.getElementById('sidebar');
+    const closeSidebar = document.getElementById('closeSidebar');
+
+    loginBtn.addEventListener('click', () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+          const user = result.user;
+          showSidebar(user);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    });
+
+    function showSidebar(user) {
+      loginBtn.style.display = 'none';
+      document.getElementById('userPic').src = user.photoURL;
+      document.getElementById('userPic').style.display = 'inline-block';
+
+      document.getElementById('sidebarPic').src = user.photoURL;
+      document.getElementById('sidebarName').textContent = user.displayName;
+      document.getElementById('sidebarEmail').textContent = user.email;
+
+      sidebar.classList.add('show');
+    }
+
+    logoutBtn.addEventListener('click', () => {
+      firebase.auth().signOut().then(() => {
+        loginBtn.style.display = 'inline-block';
+        document.getElementById('userPic').style.display = 'none';
+        sidebar.classList.remove('show');
+      });
+    });
+
+    closeSidebar.addEventListener('click', () => {
+      sidebar.classList.remove('show');
+    });
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        showSidebar(user);
+      }
+    });
+  </script>
+</body>
+</html>

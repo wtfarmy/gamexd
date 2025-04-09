@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Firebase App (core SDK) -->
+<script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js"></script>
+<!-- Firebase Auth SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js"></script>
+
+  <title>Gaming x Anime Welcome</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+body{
+  background-color: #ffffff;
+}
+.blackarea{
+  background-color: #000000;
+}
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to right, #0000001d 50%rgb(255, 255, 255)11 50%);
+    }
+
+    .content {
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .content h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgb(0, 0, 0);
+    }
+
+    .content p {
+      font-size: 1.3rem;
+      margin: 1rem 0;
+      color: #000000;
+    }
+
+    .btn {
+      margin-top: 2rem;
+      padding: 1rem 2.5rem;
+      background: rgb(0, 0, 0);
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: rgb(250, 0, 50);
+      color: white;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgb(255, 0, 0);
+    }
+
+    @media (max-width: 768px) {
+      .content h1 {
+        font-size: 2.5rem;
+      }
+
+      .btn {
+        padding: 0.8rem 1.8rem;
+      }
+    }
+ 
+    .anime-title {
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    header {
+      background: #ffffff;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+  
+    .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-logo {
+  height: 32px;
+  width: auto;
+}
+
+.brand-text {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #000000;
+  display: flex;
+  font-style: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  flex-direction: row;
+  align-items: center;
+}
+
+.brand-sub {
+  color: rgb(255, 255, 255);
+  margin-left: 4px;
+}
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+    .nav-right button{
+      color: white;
+      background-color:rgb(0, 0, 0);
+      display: flex;
+      font-size: 14px;
+      align-items: center;
+      border-radius: 10px;
+      padding: 3px 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-style: bold;
+      gap: 10px;
+      position: relative;
+    }
+    #userEmail {
+      display: none; /* hidden as requested */
+    }
+  
+    .profile-pic {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      cursor: pointer;
+    }
+  
+    .menu-dropdown {
+      position: absolute;
+      right: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: none;
+      flex-direction: column;
+      padding: 8px 0;
+      width: 160px;
+      z-index: 1000;
+    }
+  
+    .menu-dropdown a, .menu-dropdown button {
+      padding: 10px 14px;
+      text-align: left;
+      border: none;
+      background: none;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: #444;
+      text-decoration: none;
+      width: 100%;
+    }
+  
+    button {
+      background: rgb(255, 0, 64);
+      color: rgb(255, 255, 255);
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+  
+    @media (max-width: 480px) {
+      .brand {
+        font-size: 1.1rem;
+      }
+      button {
+        padding: 4px 10px;
+        font-size: 12px;
+      }
+    }
+    #floatingIcon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #333;
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      font-size: 20px;
+      transition: background-color 0.3s;
+    }
+
+    #floatingIcon:hover {
+      background-color: #555;
+    }
+
+    /* Tooltip */
+    #floatingIcon:hover::after {
+      content: "What's New";
+      position: absolute;
+      bottom: 55px;
+      right: 0;
+      background: #333;
+      color: #fff;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 5px;
+      white-space: nowrap;
+      z-index: 1001;
+      opacity: 0.9;
+    }
+
+    #scrollPanel {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 250px;
+      max-height: 320px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      padding: 15px;
+      display: block;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      z-index: 999;
+    }
+
+    #scrollPanel.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    #scrollPanel h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .scroll-content {
+      max-height: 200px;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+
+    .scroll-content::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .scroll-content::-webkit-scrollbar-thumb {
+      background-color: #ffffff;
+      border-radius: 10px;
+    }
+
+    #closePanel {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 18px;
+      color: #ffffff;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    #closePanel:hover {
+      color: #ffffff;
+    }
+    .imgbnr{
+      text-align: center;
+      align-items: center;
+    }
+    .imgbnr img{
+      width: 300px;
+      height: auto;
+      text-align: center;
+    }
+    @media (max-width: 480px) {
+
+      .imgbnr {
+        text-align: center;
+        max-width: 400px;
+      }
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .tournament-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 600px) {
+      .tournament-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .tournament-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .tournament-card {
+      background: #000000;
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .tournament-card:hover {
+      transform: scale(1.02);
+    }
+
+    .tournament-image {
+      position: relative;
+    }
+
+    .tournament-image img {
+      width: 100%;
+      display: block;
+    }
+
+    .badge {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: #fbbf24;
+      color: #ffffff;
+      padding: 4px 12px;
+      font-weight: bold;
+      font-size: 12px;
+      border-top-left-radius: 10px;
+    }
+
+    .tournament-content {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .game-label {
+      font-size: 12px;
+      color: #a1a1a1;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .tournament-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .calendar {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .calendar::before {
+      content: "📅";
+      margin-right: 6px;
+    }
+
+    .organizer {
+      background: #393939;
+      border-radius: 10px;
+      padding: 10px;
+      color: white;
+      font-size: 14px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .register-btn {
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .register-btn:hover {
+      background: #ffa200;
+    }
+
+    .view-all-btn {
+      margin-top: 30px;
+      background: #00ff88;
+      color: #000;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 18px;
+      max-width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      text-align: center;
+      cursor: pointer;
+    }
+    .thead{
+      text-align: center;
+      align-items: center;
+    }
+    .thead h1{
+      color: white;
+      font-family: Verdana, Geneva, sans-serif;
+      text-align: center;
+      align-items: center;
+      padding: 8px 10px;
+      font-style: bold;
+    }
+
+    .menu-dropdown {
+  display: none;
+  flex-direction: column;
+  top: 45px;
+}
+
+  </style>
+</head>
+<script>
+  
+    const firebaseConfig = {
+      apiKey: "AIzaSyDpGY_-T5qabHHlDQJ-BCzhMmXY2b2jiSQ",
+      authDomain: "harjus-b4add.firebaseapp.com",
+      projectId: "harjus-b4add",
+    };
+  
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  const auth = firebase.auth();
+  const provider = new firebase.auth.GoogleAuthProvider();
+</script>
+<script>
+  const loginBtn = document.getElementById("loginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const userEmail = document.getElementById("userEmail");
+  const userPic = document.getElementById("userPic");
+  const dropdown = document.getElementById("dropdown");
+
+  loginBtn.addEventListener("click", () => {
+    auth.signInWithPopup(provider)
+      .then((result) => {
+        const user = result.user;
+        updateUI(user);
+      })
+      .catch((error) => {
+        alert("Login Failed: " + error.message);
+      });
+  });
+
+  logoutBtn.addEventListener("click", () => {
+    auth.signOut().then(() => {
+      updateUI(null);
+    });
+  });
+
+  function updateUI(user) {
+    if (user) {
+      loginBtn.style.display = "none";
+      userPic.style.display = "block";
+      userPic.src = user.photoURL;
+      userEmail.innerText = user.email;
+    } else {
+      loginBtn.style.display = "block";
+      userPic.style.display = "none";
+      userEmail.innerText = "";
+      dropdown.style.display = "none";
+    }
+  }
+
+  // Toggle dropdown on profile pic click
+  userPic.addEventListener("click", () => {
+    dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+  });
+
+  // Keep UI in sync on page load
+  auth.onAuthStateChanged((user) => {
+    updateUI(user);
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const userEmail = document.getElementById("userEmail");
+    const userPic = document.getElementById("userPic");
+    const dropdown = document.getElementById("dropdown");
+
+    loginBtn.addEventListener("click", () => {
+      auth.signInWithPopup(provider)
+        .then((result) => {
+          const user = result.user;
+          updateUI(user);
+        })
+        .catch((error) => {
+          alert("Login Failed: " + error.message);
+        });
+    });
+
+    logoutBtn.addEventListener("click", () => {
+      auth.signOut().then(() => {
+        updateUI(null);
+      });
+    });
+
+    function updateUI(user) {
+      if (user) {
+        loginBtn.style.display = "none";
+        userPic.style.display = "block";
+        userPic.src = user.photoURL;
+        userEmail.innerText = user.email;
+      } else {
+        loginBtn.style.display = "block";
+        userPic.style.display = "none";
+        userEmail.innerText = "";
+        dropdown.style.display = "none";
+      }
+    }
+
+    userPic.addEventListener("click", () => {
+      dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+    });
+
+    // Hide dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!dropdown.contains(e.target) && e.target !== userPic) {
+        dropdown.style.display = "none";
+      }
+    });
+
+    auth.onAuthStateChanged((user) => {
+      updateUI(user);
+    });
+  });
+</script>
+
+<body>
+  <header>
+    <div class="brand">
+        <img src="HARJUS-removebg-preview.png" alt="Logo" class="brand-logo">
+        <span class="brand-text"><b>GAMEXD</b></span>
+      </div> 
+      <div class="nav-right">
+      <span id="userEmail"></span>
+      <img id="userPic" class="profile-pic" style="display:none;" />
+      <button id="loginBtn"><b>Login</b></button>
+      <div id="dropdown" class="menu-dropdown">
+        <a href="orders.html">My Orders</a>
+        <a href="cart.html">My Cart</a>
+        <a href="#">Help / Feedback</a>
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </header>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="container">
+    <div class="content">
+      <h1>Welcome to GameXD</h1>
+      <p>Where Gaming meets Anime Power</p>
+      <button class="btn">Join Now!</button>
+    </div>
+  </div>
+  <br>
+  <div class="blackarea">
+    <br>
+    <div class="thead">
+      <h1>
+        <b><i>
+          Tournaments
+        </i></b>
+      </h1>
+    </div>
+    <br>
+    <hr>
+    <br>
+<div class="tournament-grid">
+
+  <!-- Tournament Card Start -->
+  <div class="tournament-card">
+    <div class="tournament-image">
+      <img src="Solo Tournament.png" alt="Free Fire Tournament">
+      <div class="badge">Featured</div>
+    </div>
+    <div class="tournament-content">
+      <div class="game-label">FREE FIRE</div>
+      <div class="tournament-title">Free Fire Showdown Summer 2025</div>
+      <div class="calendar">Registration Starts 3rd Apr 2025</div>
+      <div class="organizer">
+        <div>Tournament By</div>
+        <div><strong>GAMEXD</strong></div>
+      </div>
+      <button class="register-btn">Registration Open</button>
+    </div>
+  </div>
+  <!-- Tournament Card End -->
+
+  <!-- Duplicate this block to add more tournaments -->
+  
+  <!-- Tournament Card Start -->
+  <div class="tournament-card">
+    <div class="tournament-image">
+      <img src="mcserver.jpg" alt="Free Fire Tournament">
+      <div class="badge">Featured</div>
+    </div>
+    <div class="tournament-content">
+      <div class="game-label">MINECRAFT</div>
+      <div class="tournament-title">Player VS Player || Minecraft</div>
+      <div class="calendar">Registration Starts 3rd Apr 2025</div>
+      <div class="organizer">
+        <div>Tournament By</div>
+        <div><strong>GAMEXD</strong></div>
+      </div>
+      <button class="register-btn">Registration Open</button>
+    </div>
+  </div>
+  <!-- Tournament Card End -->
+
+  <!-- Floating Icon -->
+  <div id="floatingIcon">?</div>
+
+  <!-- Scrollable Panel -->
+  <div id="scrollPanel">
+    <span id="closePanel">&times;</span>
+    <h3><b><i>What's New!</i></b></h3>
+    <div class="scroll-content">
+      <p>New Update 1: Coming soon!</p>
+      <p>New event: 10th April Game Night!</p>
+      <p>updates coming soon...</p>
+    </div>
+  </div>
+</div>
+  <script>
+    const icon = document.getElementById('floatingIcon');
+    const panel = document.getElementById('scrollPanel');
+    const closeBtn = document.getElementById('closePanel');
+
+    icon.addEventListener('click', () => {
+      panel.classList.toggle('show');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      panel.classList.remove('show');
+    });
+  </script>
+</body>
+</html>
