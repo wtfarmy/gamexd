@@ -103,6 +103,33 @@
         opacity: 1;
       }
     }
+
+.enter-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 40px;
+  background: #fff;
+  color: #000;
+  font-size: 1.6em;
+  text-decoration: none;
+  border-radius: 14px;
+  transition: 0.4s ease;
+  opacity: 0;
+  animation: fadeIn 2s ease-in forwards;
+  animation-delay: 2.5s;
+  border: 2px solid #000;
+  font-weight: bold;
+  white-space: nowrap; /* keeps text in one line */
+  max-width: 90vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+  @media (max-width: 480px) {
+  .enter-btn {
+    font-size: 4.5vw;
+    padding: 12px 20px;
+  }
+  }
   </style>
 </head>
 <body>
