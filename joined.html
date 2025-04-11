@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Membership Joined</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    .info {
+      font-size: 1.5rem;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to GameXD Membership</h1>
+  <div class="info" id="membershipInfo"></div>
+  <p>Membership valid for: <span id="countdown">30 days</span></p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get("email");
+    const type = params.get("type");
+  
+    if (!email || !type) {
+      document.body.innerHTML = "<h2>Access Denied</h2><p>Invalid membership link.</p>";
+      throw new Error("Missing email or type");
+    }
+  
+    document.getElementById("membershipInfo").textContent = `Membership: ${type} (${email})`;
+  
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 30);
+  
+    function updateCountdown() {
+      const now = new Date();
+      const diff = endDate - now;
+  
+      if (diff <= 0) {
+        document.getElementById("countdown").textContent = "Expired";
+        return;
+      }
+  
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+  
+      document.getElementById("countdown").textContent =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+  
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+  
+</body>
+</html>
