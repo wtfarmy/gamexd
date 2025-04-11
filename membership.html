@@ -235,6 +235,24 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
 margin-bottom: 20px;
 color: #292929;
 }
+#loginBtn {
+  color: white;
+  background: linear-gradient(to right, #ff003c, #8c00ff);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+#logoutBtn {
+  color: rgb(33, 33, 33);
+  background-color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  padding: 4px 8px;
+  cursor: pointer;
+}
 
   </style>
 </head>
@@ -264,8 +282,7 @@ color: #292929;
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
     <div class="close-btn" onclick="toggleSidebar()"></div>
-    <a href="#" onclick="loginWithGoogle()"><b>Login/Sign In</b></a>
-    <a href="#"><b>Events</b></a>
+    <button id="loginBtn" onclick="loginWithGoogle()">Login</button>    
     <a href="homepage.html"><b>Home</b></a>
     <a href="#"><b>Merchandise</b></a>
     <a href="#"><b>Feedback</b></a>
@@ -322,10 +339,62 @@ color: #292929;
 </div>
 
 <script>
-  function join(type) {
-    localStorage.setItem('membershipType', type);
-    window.location.href = 'form.html';
-  } 
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.body.classList.toggle('sidebar-open');
+  }
+</script>
+
+  <script type="module">
+// TODO: Replace the below config with your actual Firebase project config
+const firebaseConfig = {
+  apiKey: "AIzaSyBnDGSg_K60_Tp7w13c-O8Jb9hLkErSCY8",
+authDomain: "gamexd-110.firebaseapp.com",
+projectId: "gamexd-110",
+storageBucket: "gamexd-110.firebasestorage.app",
+messagingSenderId: "501792431454",
+appId: "1:501792431454:web:10024d189316ef9e2303cf"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+
+// Google Login
+function loginWithGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider).then((result) => {
+    const user = result.user;
+    updateUI(user);
+  }).catch((error) => {
+    console.error("Login Error:", error.message);
+  });
+}
+
+// Logout
+function logout() {
+  auth.signOut().then(() => {
+    updateUI(null);
+  });
+}
+
+// Update UI
+function updateUI(user) {
+  if (user) {
+    loginBtn.style.display = "none";
+    logoutBtn.style.display = "inline-block";
+  } else {
+    loginBtn.style.display = "inline-block";
+    logoutBtn.style.display = "none";
+  }
+}
+
+// On Auth State Change
+auth.onAuthStateChanged((user) => {
+  updateUI(user);
+});
 </script>
 
 </body>

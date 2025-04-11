@@ -469,21 +469,45 @@
       font-size: 14px;
       color: #777;
     }
+    #loginBtn {
+  color: white;
+  background: linear-gradient(to right, #ff003c, #8c00ff);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+#logoutBtn {
+  color: rgb(33, 33, 33);
+  background-color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
   </style>
 </head>
+<!-- Firebase App (core) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+
+<!-- Firebase Auth -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 
 <body>
   <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
-    <div class="close-btn" onclick="toggleSidebar()"></div>
-    <a href="#" onclick="loginWithGoogle()"><b>Login/Sign In</b></a>
-    <a href="#"><b>Events</b></a>
-    <a href="membership.html"><b>Membership</b></a>
-    <a href="#"><b>Merchandise</b></a>
-    <a href="#"><b>Feedback</b></a>
-    <a href="#" onclick="logout()">Logout</a>
+    <div class="close-btn" onclick="toggleSidebar()">✕</div>
+    <button id="loginBtn" onclick="loginWithGoogle()">Login</button>
+    <a href="#" onclick="toggleSidebar()"><b>Events</b></a>
+    <a href="membership.html" onclick="toggleSidebar()"><b>Membership</b></a>
+    <a href="#" onclick="toggleSidebar()"><b>Merchandise</b></a>
+    <a href="#" onclick="toggleSidebar()"><b>Creators</b></a>
+    <button id="logoutBtn" onclick="logout()" >Logout</button>
   </div>
 
   <!-- Header -->
@@ -572,22 +596,64 @@
   </footer>
   <script>
     function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      const overlay = document.getElementById('overlay');
-      sidebar.classList.toggle('open');
-      overlay.classList.toggle('show');
+      document.getElementById('sidebar').classList.toggle('open');
       document.body.classList.toggle('sidebar-open');
     }
-
-    // Stub Firebase auth functions (replace with actual implementation)
-    function loginWithGoogle() {
-      alert("Google Login triggered (Firebase function placeholder)");
-    }
-
-    function logout() {
-      alert("Logout triggered (Firebase function placeholder)");
-    }
   </script>
+
+    <script type="module">
+  // TODO: Replace the below config with your actual Firebase project config
+  const firebaseConfig = {
+    apiKey: "AIzaSyBnDGSg_K60_Tp7w13c-O8Jb9hLkErSCY8",
+  authDomain: "gamexd-110.firebaseapp.com",
+  projectId: "gamexd-110",
+  storageBucket: "gamexd-110.firebasestorage.app",
+  messagingSenderId: "501792431454",
+  appId: "1:501792431454:web:10024d189316ef9e2303cf"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  const loginBtn = document.getElementById("loginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  // Google Login
+  function loginWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider).then((result) => {
+      const user = result.user;
+      updateUI(user);
+    }).catch((error) => {
+      console.error("Login Error:", error.message);
+    });
+  }
+
+  // Logout
+  function logout() {
+    auth.signOut().then(() => {
+      updateUI(null);
+    });
+  }
+
+  // Update UI
+  function updateUI(user) {
+    if (user) {
+      loginBtn.style.display = "none";
+      logoutBtn.style.display = "inline-block";
+    } else {
+      loginBtn.style.display = "inline-block";
+      logoutBtn.style.display = "none";
+    }
+  }
+
+  // On Auth State Change
+  auth.onAuthStateChanged((user) => {
+    updateUI(user);
+  });
+</script>
+
+  
 </body>
 
-</html>
+</html> 
