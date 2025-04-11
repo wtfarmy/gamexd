@@ -3,197 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Product Viewer</title>
+  <title>Glaid Style Login</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff;
-      color: #000;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #49026e, #7300a1);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .product-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      padding: 1rem;
-    }
-
-    .product-card {
-      background: #f9f9f9;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 1rem;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .product-card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .product-card h3, .product-card p {
-      margin: 0.5rem 0;
-    }
-
-    .discount {
-      background: crimson;
-      color: white;
-      font-size: 0.75rem;
-      padding: 4px 8px;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      border-radius: 5px;
-    }
-
-    .rating {
-      color: #FFD700; /* yellow stars */
-      font-size: 1rem;
-      margin: 0.3rem 0;
-    }
-
-    .price-original {
-      text-decoration: line-through;
-      color: #888;
-    }
-
-    .price-discount {
-      color: #28a745;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    .product-detail {
-      display: none;
-      padding: 2rem;
-      background: #fff;
+    .container {
       text-align: center;
-      animation: fadeIn 0.5s ease-in-out;
     }
 
-    .product-detail.active {
-      display: block;
+    .login-card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      width: 300px;
     }
 
-    #detailImage {
-      max-width: 100%;
-      border-radius: 12px;
-      margin-bottom: 1rem;
+    h1 {
+      color: #7300a1;
+      margin-bottom: 20px;
     }
 
-    button {
-      background-color: #000;
-      color: #fff;
-      border: none;
-      padding: 0.7rem 1.5rem;
-      border-radius: 8px;
-      font-weight: bold;
+    .google-btn {
+      background: #fff;
+      color: #444;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 30px;
       cursor: pointer;
-      transition: background-color 0.2s ease;
+      transition: all 0.3s ease;
     }
 
-    button:hover {
-      background-color: #444;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: scale(0.95);}
-      to {opacity: 1; transform: scale(1);}
+    .google-btn:hover {
+      background: #f1f1f1;
     }
   </style>
 </head>
 <body>
-  <div class="product-list" id="productList"></div>
-
-  <div class="product-detail" id="productDetail">
-    <button id="closeDetail">← Back</button>
-    <img id="detailImage" alt="Product Image"/>
-    <h2 id="detailName"></h2>
-    <div class="rating" id="detailRating"></div>
-    <p>
-      <span class="price-original" id="detailOriginalPrice"></span>
-      <span class="price-discount" id="detailDiscountedPrice"></span>
-    </p>
-    <button id="addToCart">Add to Cart</button>
-    <p id="detailFeatures"></p>
-    <p id="detailDescription"></p>
+  <div class="container">
+    <div class="login-card">
+      <h1>Glaid</h1>
+      <button id="googleLogin" class="google-btn">Sign in with Google</button>
+    </div>
   </div>
 
-  <script>
-    const products = [
-      {
-        name: "Slime Rancher 2 Vinyl Soundtrack",
-        price: 54,
-        image: "slime-vinyl.jpg",
-        rating: 4,
-        features: "Vibrant Pink, Green, and Blue Vinyl",
-        description: "Official Slime Rancher 2 3xLP Original Soundtrack."
-      },
-      {
-        name: "Runic Hat",
-        price: 24,
-        image: "runic-hat.jpg",
-        rating: 5,
-        features: "Stylish cap from TUNIC game.",
-        description: "A premium black and green hat with embroidered patch."
-      }
-    ];
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 
-    const productList = document.getElementById("productList");
-    const productDetail = document.getElementById("productDetail");
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+      appId: "YOUR_APP_ID"
+    };
 
-    const detailName = document.getElementById("detailName");
-    const detailImage = document.getElementById("detailImage");
-    const detailFeatures = document.getElementById("detailFeatures");
-    const detailDescription = document.getElementById("detailDescription");
-    const detailRating = document.getElementById("detailRating");
-    const detailOriginalPrice = document.getElementById("detailOriginalPrice");
-    const detailDiscountedPrice = document.getElementById("detailDiscountedPrice");
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
-    products.forEach((product) => {
-      const discountedPrice = (product.price * 0.3).toFixed(2);
-      const stars = "★".repeat(product.rating) + "☆".repeat(5 - product.rating);
-
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.innerHTML = `
-        <span class="discount">70% OFF</span>
-        <img src="${product.image}" alt="${product.name}" />
-        <h3>${product.name}</h3>
-        <div class="rating">${stars}</div>
-        <p><span class="price-original">$${product.price}</span> 
-        <span class="price-discount">$${discountedPrice}</span></p>
-      `;
-      card.addEventListener("click", () => {
-        detailName.textContent = product.name;
-        detailImage.src = product.image;
-        detailRating.textContent = stars;
-        detailOriginalPrice.textContent = $${product.price};
-        detailDiscountedPrice.textContent = $${discountedPrice};
-        detailFeatures.textContent = product.features;
-        detailDescription.textContent = product.description;
-        productList.style.display = "none";
-        productDetail.classList.add("active");
-      });
-      productList.appendChild(card);
-    });
-
-    document.getElementById("closeDetail").addEventListener("click", () => {
-      productDetail.classList.remove("active");
-      productList.style.display = "grid";
+    document.getElementById("googleLogin").addEventListener("click", () => {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          window.location.href = "homepage.html";
+        })
+        .catch((error) => {
+          alert("Login failed: " + error.message);
+        });
     });
   </script>
 </body>
