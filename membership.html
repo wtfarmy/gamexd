@@ -13,13 +13,13 @@
       color: #333;
     }
     header {
-      background: #111;
-      color: #fff;
+      background: #131313;
+      color: #ffffff;
       padding: 15px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 3px solid #6200ea;
+      border-bottom: 3px solid #8800ff;
     }
     .logo {
       font-size: 1.6em;
@@ -63,48 +63,57 @@
     }
 
     .card {
-      border-radius: 16px;
-      padding: 20px;
-      width: 90%;
-      max-width: 400px;
-      background: #f7f7f7;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: left;
-    }
+  border-radius: 20px;
+  padding: 25px 20px;
+  width: 90%;
+  max-width: 420px;
+  background: #ffffff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+  border: 1px solid #ededed;
+}
 
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.4rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+.card:hover {
+  transform: translateY(-5px);
+}
 
-    .card img {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-    }
+.card img {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  margin-bottom: 15px;
+}
 
-    .card ul {
-      list-style: disc;
-      margin-left: 20px;
-      margin-bottom: 20px;
-    }
+.card ul {
+  padding-left: 0;
+  list-style: none;
+  color: #444;
+  font-size: 1rem;
+  margin: 0 0 20px;
+}
 
-    .btn {
-      background: linear-gradient(to right, #f00, #f0f);
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.card ul li {
+  margin-bottom: 10px;
+}
 
-    .btn:hover {
-      opacity: 0.9;
-    }
+.btn {
+  background: linear-gradient(to bottom right, #ff2347, #f948ff);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #4b00b0;
+}
 
     @media (max-width: 500px) {
       .banner-img {
@@ -270,6 +279,8 @@ color: #292929;
       text-decoration: none;
       color: white;
     }
+
+    
   </style>
 </head>
 
@@ -326,34 +337,24 @@ color: #292929;
   <div class="cards-container">
 
     <div class="card">
-      <h3><img src="original-35ca2f9e87174c3ed1b40d81c777357b.webp" alt="RAGE"> RAGE Membership - ₹99</h3>
+      <img src="original-35ca2f9e87174c3ed1b40d81c777357b.webp" alt="RAGE Membership Icon">
       <ul>
         <li>Join Events & Fests</li>
         <li>30% Discount</li>
         <li>Collab Option</li>
       </ul>
-      <a href="form.html"><button class="btn" onclick="join('RAGE')">JOIN</button>
+      <a href="form.html"><button class="btn" onclick="join('RAGE')">Join for ₹99</button></a>
     </div>
+    
 
     <div class="card">
-      <h3><img src="original-2292400cd66dc3f5b2cec35ce6cb8f12.webp" alt="Uchiha"> UCHIHA Membership - ₹120</h3>
+      <img src="original-2292400cd66dc3f5b2cec35ce6cb8f12.webp" alt="RAGE Membership Icon">
       <ul>
-        <li>Access to premium tournaments</li>
-        <li>Exclusive avatar & badge</li>
+        <li>Creator Feature Support</li>
+        <li>Collab With GameXD Feature</li>
       </ul>
-      <a href="form.html"><button class="btn" onclick="join('UCHIHA')">JOIN</button></a>
+      <a href="form.html"><button class="btn" onclick="join('RAGE')">Join for ₹140</button></a>
     </div>
-
-    <div class="card">
-      <h3><img src="akatsuki.png" alt="Akatsuki"> AKATSUKI Membership - ₹140</h3>
-      <ul>
-        <li>VIP Access + All Benefits</li>
-        <li>Special gifts & spotlight</li>
-      </ul>
-      <a href="form.html"><button class="btn" onclick="join('AKATSUKI')">JOIN</button></a>
-    </div>
-    a@ZSCD
-  </div>
 </div>
 
 <script>
