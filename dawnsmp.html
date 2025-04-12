@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- CSS Styles -->
+  <style>
+    /* General Styling */
+    .mc-server {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      color: #1c1c1c;
+      border-radius: 10px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.256);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  
+    h2 {
+      font-size: 2rem;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  
+    /* Minecraft Banner */
+    .mc-banner img {
+      width: 70;
+      height: auto;
+      max-height: 100px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+  
+    /* Button Styling */
+    button {
+      background-color: #ff0059;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+  
+    button:hover {
+      background-color: #2ecc71;
+    }
+  
+    /* Status Text */
+    #status {
+      font-weight: bold;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 1.2rem;
+    }
+  
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .mc-server {
+        padding: 15px;
+      }
+  
+      h2 {
+        font-size: 1.5rem;
+      }
+  
+      #status {
+        font-size: 1rem;
+      }
+    }
+    p{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-style: bold;
+        font-weight: bold
+    }
+  </style>
+</head>
+<body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Minecraft Server Section -->
+<section class="mc-server">
+    <h2>🌍 Join Our Minecraft Server!</h2>
+    
+    <!-- Banner Image -->
+    <div class="mc-banner">
+      <img src="mcserver.jpg"/>
+    </div>
+    
+    <p>Server IP: <span id="mc-ip">dawmsmp.aternos.me</span></p>
+    <p>Version: <strong>1.20.4</strong></p>
+    <button onclick="copyIP()">📋 Copy IP</button>
+    <p>Status: <span id="status">Checking...</span></p>
+  </section>
+  
+  <!-- JavaScript to Copy IP and Fetch Status -->
+  <script>
+    function copyIP() {
+      const ip = document.getElementById("mc-ip").innerText;
+      navigator.clipboard.writeText(ip).then(() => {
+        alert("Server IP copied to clipboard!");
+      });
+    }
+  
+    // Fetch Server Status using a free API
+    fetch("https://api.mcsrvstat.us/2/dawmsmp.aternos.me")
+      .then(response => response.json())
+      .then(data => {
+        if (data.online) {
+          document.getElementById("status").innerText = `🟢 Online - ${data.players.online}/${data.players.max} players`;
+        } else {
+          document.getElementById("status").innerText = "🔴 Offline";
+        }
+      });
+  </script>
+  
+ </body>
+  
+</html>

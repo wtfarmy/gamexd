@@ -510,7 +510,40 @@
       color: rgb(253, 198, 0);
       text-shadow: 0 0 6px rgb(255, 119, 0);
     }
+
+    @keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.characters img {
+  animation: float 3s ease-in-out infinite;
+}
+.sidebar a i {
+  margin-right: 8px;
+}
+.sidebar {
+  z-index: 1000;
+}
+
+.characters {
+  position: relative;
+  z-index: 1;
+}
+body.sidebar-open .characters img {
+  animation-play-state: paused;
+}
+
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <!-- Firebase App (core) -->
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -526,10 +559,11 @@
     <span id="userEmail"></span>
     <img id="userPic" class="profile-pic" style="display:none;" />
     <button id="loginBtn">Login</button>
-    <a href="#" onclick="toggleSidebar()" id="yellowp1"><b>Events</b></a>
-    <a href="membership.html" onclick="toggleSidebar()"><b>Membership</b></a>
-    <a href="#" onclick="toggleSidebar()"><b>Merchandise</b></a>
-    <a href="#" onclick="toggleSidebar()"><b>Creators</b></a>
+    <a href="#" onclick="toggleSidebar()" id="yellowp1"><i class="fas fa-calendar-alt"></i> <b>Events</b></a>
+    <a href="membership.html" onclick="toggleSidebar()"><i class="fas fa-user-plus"></i> <b>Membership</b></a>
+    <a href="#" onclick="toggleSidebar()"><i class="fas fa-tshirt"></i> <b>Merchandise</b></a>
+    <a href="#" onclick="toggleSidebar()"><i class="fas fa-video"></i> <b>Creators</b></a>
+    
     <br>
     <button id="logoutBtn" onclick="logout()">Logout</button>
   </div>
@@ -595,7 +629,8 @@
           <div>Powered By</div>
           <div><strong>GAMEXD</strong></div>
         </div>
-        <button class="register-btn">Registration Open</button>
+        <button class="register-btn" onclick="redirectToSecure()">Join The World</button>
+
       </div>
     </div>
   </div>
@@ -620,6 +655,11 @@
     </div>
   </footer>
   <script>
+   
+  function redirectToSecure() {
+    window.location.href = "secured-page.html";
+  }
+
     function toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('open');
       document.body.classList.toggle('sidebar-open');
