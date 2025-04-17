@@ -273,36 +273,45 @@
       grid-template-columns: 1fr;
       gap: 20px;
     }
-/* Base styles */
-.tournament-card {
-  width: 90%; /* Makes the card responsive based on the screen size */
-  max-width: 400px; /* Maximum width for large screens */
-  min-width: 250px; /* Minimum width for very small screens */
-  margin: 20px auto; /* Centers the card with spacing */
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  /* Optional hover effect */
-  cursor: pointer;
-}
 
-/* For large screens (PC/laptop) */
-@media (min-width: 1024px) {
-  .tournament-card {
-    width: 40vw; /* 40% of the viewport width for larger screens */
-    max-width: 500px; /* Limits the size to a maximum on very large screens */
-  }
-}
+    /* Base styles */
+    .tournament-card {
+      width: 90%;
+      /* Makes the card responsive based on the screen size */
+      max-width: 400px;
+      /* Maximum width for large screens */
+      min-width: 250px;
+      /* Minimum width for very small screens */
+      margin: 20px auto;
+      /* Centers the card with spacing */
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      /* Optional hover effect */
+      cursor: pointer;
+    }
 
-/* For mobile screens */
-@media (max-width: 767px) {
-  .tournament-card {
-    width: 100%; /* Takes full width on small screens */
-    max-width: 100%; /* Prevents it from getting too wide */
-  }
-}
+    /* For large screens (PC/laptop) */
+    @media (min-width: 1024px) {
+      .tournament-card {
+        width: 40vw;
+        /* 40% of the viewport width for larger screens */
+        max-width: 500px;
+        /* Limits the size to a maximum on very large screens */
+      }
+    }
+
+    /* For mobile screens */
+    @media (max-width: 767px) {
+      .tournament-card {
+        width: 100%;
+        /* Takes full width on small screens */
+        max-width: 100%;
+        /* Prevents it from getting too wide */
+      }
+    }
 
 
 
@@ -407,7 +416,7 @@
       font-weight: 900;
       white-space: nowrap;
       /* Keeps text on one line */
-      background: linear-gradient(to right, #ff006f, #00ff99);
+      background: linear-gradient(to right, #ff006f, #ff0000);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -517,41 +526,48 @@
       border: 2px solid var(--primary);
       cursor: pointer;
     }
-    #yellowp1{
+
+    #yellowp1 {
       color: rgb(253, 198, 0);
       text-shadow: 0 0 6px rgb(255, 119, 0);
     }
 
     @keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
+      0% {
+        transform: translateY(0px);
+      }
 
-.characters img {
-  animation: float 3s ease-in-out infinite;
-}
-.sidebar a i {
-  margin-right: 8px;
-}
-.sidebar {
-  z-index: 1000;
-}
+      50% {
+        transform: translateY(-10px);
+      }
 
-.characters {
-  position: relative;
-  z-index: 1;
-}
-body.sidebar-open .characters img {
-  animation-play-state: paused;
-}
-.wrapper {
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .characters img {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .sidebar a i {
+      margin-right: 8px;
+    }
+
+    .sidebar {
+      z-index: 1000;
+    }
+
+    .characters {
+      position: relative;
+      z-index: 1;
+    }
+
+    body.sidebar-open .characters img {
+      animation-play-state: paused;
+    }
+
+    .wrapper {
       display: flex;
       align-items: center;
       gap: 40px;
@@ -560,7 +576,8 @@ body.sidebar-open .characters img {
     }
 
     .boruto {
-      width: 200px; /* Bigger Boruto image */
+      width: 200px;
+      /* Bigger Boruto image */
       min-width: 200px;
       max-width: 300px;
     }
@@ -572,7 +589,8 @@ body.sidebar-open .characters img {
     }
 
     .rasengan-container {
-      width: 50px; /* Smaller Rasengan size */
+      width: 50px;
+      /* Smaller Rasengan size */
       height: 50px;
       animation: float 3s ease-in-out infinite;
     }
@@ -606,21 +624,49 @@ body.sidebar-open .characters img {
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.4; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.1); }
+
+      0%,
+      100% {
+        opacity: 0.4;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+      }
     }
 
     @keyframes float {
-      0% { transform: translate(0, 0); }
-      25% { transform: translate(10px, -10px); }
-      50% { transform: translate(-10px, 5px); }
-      75% { transform: translate(5px, 10px); }
-      100% { transform: translate(0, 0); }
+      0% {
+        transform: translate(0, 0);
+      }
+
+      25% {
+        transform: translate(10px, -10px);
+      }
+
+      50% {
+        transform: translate(-10px, 5px);
+      }
+
+      75% {
+        transform: translate(5px, 10px);
+      }
+
+      100% {
+        transform: translate(0, 0);
+      }
     }
 
     @media (max-width: 600px) {
@@ -633,8 +679,64 @@ body.sidebar-open .characters img {
         height: 60px;
       }
     }
+
+    .marquee {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .marquee::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 100%;
+      background:none;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .marquee-content {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll-left 15s linear infinite;
+    }
+
+    .marquee span {
+      font-size: 18px;
+      padding-right: 4rem;
+      background: linear-gradient(90deg, #ff0062, #00ffff, #ffcc00, #f700ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: shimmer 5s linear infinite;
+      font-family: 'Press Start 2P', cursive;
+
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 0% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">  
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 <!-- Firebase App (core) -->
@@ -655,7 +757,7 @@ body.sidebar-open .characters img {
     <a href="membership.html" onclick="toggleSidebar()"><i class="fas fa-user-plus"></i> <b>Membership</b></a>
     <a href="#" onclick="toggleSidebar()"><i class="fas fa-tshirt"></i> <b>Merchandise</b></a>
     <a href="#" onclick="toggleSidebar()"><i class="fas fa-video"></i> <b>Creators</b></a>
-    
+
     <br>
     <button id="logoutBtn" onclick="logout()">Logout</button>
   </div>
@@ -672,10 +774,21 @@ body.sidebar-open .characters img {
       <span></span>
     </div>
   </header>
-<br>
+  <br>
+  <div class="marquee">
+    <div class="marquee-content">
+      <span>Welcome to GameXD</span>
+      <span>Welcome to GameXD</span>
+      <span>Welcome to GameXD</span>
+      <span>Welcome to GameXD</span>
+      <span>Welcome to GameXD</span>
+      <span>Welcome to GameXD</span>
+    </div>
+  </div>
+  <br>
   <div class="wrapper">
     <div class="boruto">
-      <img src="Abstract Illustrative Stream Studio Logo (7).png" alt="Boruto">
+      <img src="Abstract_Illustrative_Stream_Studio_Logo__4_-removebg-preview (1).png" alt="Boruto">
     </div>
     <div class="rasengan-container">
       <div class="rasengan"></div>
@@ -684,6 +797,7 @@ body.sidebar-open .characters img {
   <div class="membership-section">
     <h2 class="membership-offer"><b>Join Our Free Membership!</b></h2>
   </div>
+  <br>
   <section id="about">
     <img src="WGAMEXD IS A GAMING & ENTERTAINING WEBSITE WHERE YOU CAN JOIN IN EVENTS AND WIN AWSM REWARDS.... (2).png"
       alt="About Us Image" class="about-us-image">
@@ -707,7 +821,7 @@ body.sidebar-open .characters img {
           Knight</span><br>$45</div>
     </div>
   </section> <br> -->
-  <br>
+ 
   <div class="tournament-grid">
 
     <!-- Tournament Card Start -->
@@ -749,10 +863,10 @@ body.sidebar-open .characters img {
     </div>
   </footer>
   <script>
-   
-  function redirectToSecure() {
-    window.location.href = "secured-page.html";
-  }
+
+    function redirectToSecure() {
+      window.location.href = "secured-page.html";
+    }
 
     function toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('open');
