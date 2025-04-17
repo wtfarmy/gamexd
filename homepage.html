@@ -273,27 +273,38 @@
       grid-template-columns: 1fr;
       gap: 20px;
     }
+/* Base styles */
+.tournament-card {
+  width: 90%; /* Makes the card responsive based on the screen size */
+  max-width: 400px; /* Maximum width for large screens */
+  min-width: 250px; /* Minimum width for very small screens */
+  margin: 20px auto; /* Centers the card with spacing */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  /* Optional hover effect */
+  cursor: pointer;
+}
 
-    @media (min-width: 600px) {
-      .tournament-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+/* For large screens (PC/laptop) */
+@media (min-width: 1024px) {
+  .tournament-card {
+    width: 40vw; /* 40% of the viewport width for larger screens */
+    max-width: 500px; /* Limits the size to a maximum on very large screens */
+  }
+}
 
-    @media (min-width: 900px) {
-      .tournament-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
+/* For mobile screens */
+@media (max-width: 767px) {
+  .tournament-card {
+    width: 100%; /* Takes full width on small screens */
+    max-width: 100%; /* Prevents it from getting too wide */
+  }
+}
 
-    .tournament-card {
-      background: none;
-      border-radius: 15px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease;
-    }
+
 
     .tournament-card:hover {
       transform: scale(1.02);
@@ -312,7 +323,7 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      background: #fbbf24;
+      background: linear-gradient(to right, #ff007b, #ffd500);
       color: #ffffff;
       padding: 4px 12px;
       font-weight: bold;
@@ -396,7 +407,7 @@
       font-weight: 900;
       white-space: nowrap;
       /* Keeps text on one line */
-      background: linear-gradient(90deg, #ff003c, #00ffb3, #ffd500, #8c00ff);
+      background: linear-gradient(to right, #ff006f, #00ff99);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -540,7 +551,88 @@
 body.sidebar-open .characters img {
   animation-play-state: paused;
 }
+.wrapper {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
+    .boruto {
+      width: 200px; /* Bigger Boruto image */
+      min-width: 200px;
+      max-width: 300px;
+    }
+
+    .boruto img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: none;
+    }
+
+    .rasengan-container {
+      width: 50px; /* Smaller Rasengan size */
+      height: 50px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .rasengan {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #00fffb 20%, #0374ff 40%, #180033 60%);
+      position: relative;
+      animation: spin 1.5s linear infinite;
+      box-shadow:
+        0 0 25px #00d0ff,
+        0 0 50px #00d0ff,
+        inset 0 0 30px #00d0ff;
+      margin: auto;
+    }
+
+    .rasengan::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -20%;
+      width: 140%;
+      height: 140%;
+      background: radial-gradient(circle, #00d0ff33 0%, transparent 80%);
+      border-radius: 50%;
+      filter: blur(10px);
+      animation: pulse 1.5s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); }
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(10px, -10px); }
+      50% { transform: translate(-10px, 5px); }
+      75% { transform: translate(5px, 10px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    @media (max-width: 600px) {
+      .boruto {
+        width: 200px;
+      }
+
+      .rasengan-container {
+        width: 60px;
+        height: 60px;
+      }
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -580,14 +672,17 @@ body.sidebar-open .characters img {
       <span></span>
     </div>
   </header>
-
-  <section class="hero">
-    <div class="characters">
-      <img src="gameshow.jpg" alt="Character 1">
+<br>
+  <div class="wrapper">
+    <div class="boruto">
+      <img src="Abstract Illustrative Stream Studio Logo (7).png" alt="Boruto">
     </div>
-  </section>
+    <div class="rasengan-container">
+      <div class="rasengan"></div>
+    </div>
+  </div>
   <div class="membership-section">
-    <h2 class="membership-offer"><b>Join Our Membership Now!</b></h2>
+    <h2 class="membership-offer"><b>Join Our Free Membership!</b></h2>
   </div>
   <section id="about">
     <img src="WGAMEXD IS A GAMING & ENTERTAINING WEBSITE WHERE YOU CAN JOIN IN EVENTS AND WIN AWSM REWARDS.... (2).png"
@@ -634,7 +729,6 @@ body.sidebar-open .characters img {
       </div>
     </div>
   </div>
-  <div class="floating-icon"></div>
   <br>
   <footer class="footer">
     <div class="footer-container">
