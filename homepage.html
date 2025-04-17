@@ -14,8 +14,8 @@
     }
 
     body {
-      background: #fff;
-      color: #333;
+      background: rgb(255, 255, 255);
+      color: #272727;
     }
 
     header {
@@ -30,9 +30,13 @@
     .logo {
       display: flex;
       align-items: center;
-      font-size: 1.5rem;
-      color: white;
-      font-weight: bold;
+      background: linear-gradient(90deg, #ff005d, #ffffff, #8e7171, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      font-weight: 900;
+      font-family: fantasy;
+      animation: shimmer 5s linear infinite;
     }
 
     .logo img {
@@ -414,9 +418,10 @@
       font-size: clamp(1.5rem, 4vw, 3rem);
       /* Responsive font size */
       font-weight: 900;
+      font-family: 'Press Start 2P', cursive;
       white-space: nowrap;
       /* Keeps text on one line */
-      background: linear-gradient(to right, #ff006f, #ff0000);
+      background: linear-gradient(to right, #ff006f, #ffd000);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -708,7 +713,7 @@
     .marquee span {
       font-size: 18px;
       padding-right: 4rem;
-      background: linear-gradient(90deg, #ff0062, #00ffff, #ffcc00, #f700ff);
+      background: linear-gradient(90deg, #ff0073, #050505, #272727, #353535);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-size: 200% auto;
@@ -775,16 +780,6 @@
     </div>
   </header>
   <br>
-  <div class="marquee">
-    <div class="marquee-content">
-      <span>Welcome to GameXD</span>
-      <span>Welcome to GameXD</span>
-      <span>Welcome to GameXD</span>
-      <span>Welcome to GameXD</span>
-      <span>Welcome to GameXD</span>
-      <span>Welcome to GameXD</span>
-    </div>
-  </div>
   <br>
   <div class="wrapper">
     <div class="boruto">
