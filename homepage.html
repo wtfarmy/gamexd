@@ -14,24 +14,76 @@
     }
 
     body {
-      background: rgb(255, 255, 255);
-      color: #292929;
+     background-color: white;
+     color: black;
+    }
+
+    .mario-container {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      height: 50px;
+      /* Adjust as needed */
+    }
+
+    .mario {
+      position: absolute;
+      height: auto;
+      width: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: run-across 10s linear infinite;
+    }
+
+    @keyframes run-across {
+      0% {
+        left: -60px;
+      }
+
+      100% {
+        left: calc(100% + 60px);
+        /* Move across container */
+      }
+    }
+
+
+    @keyframes run {
+      0% {
+        left: -200px;
+        /* Mario starts off-screen */
+      }
+
+      50% {
+        left: 50%;
+        /* Mario reaches the middle of the screen */
+        transform: translateY(-50%) translateX(-50%);
+      }
+
+      100% {
+        left: 100%;
+        /* Mario runs off the screen */
+      }
     }
 
     header {
-      background: rgb(32, 32, 32);
+      /* background: rgb(32, 32, 32);\ */
+      background: linear-gradient(45deg, rgb(21, 21, 21) 50%, rgb(31, 31, 31) 50%);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem;
       border-radius: 0 0 20px 20px;
-      box-shadow: 0 0 8px black;
+      box-shadow: 0 0 12px black;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      background: linear-gradient(90deg, #ff005d, #ffffff, #8e7171, #ff00ff);
+      background: linear-gradient(90deg, #ff005d, #ffffff, #ecc5c5, #825d82);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-size: 200% auto;
@@ -231,7 +283,7 @@
 
     .sidebar a {
       display: block;
-      background: linear-gradient(90deg, #ff004c, #ffffff, #ffffff, #ff4000);
+      background: linear-gradient(90deg, #ffffff, #ff006a, rgb(214, 165, 174), #ff00d4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-size: 200% auto;
@@ -436,7 +488,7 @@
       animation: pulseGlow 2s infinite alternate;
     }
 
-   
+
 
 
     .footer {
@@ -530,7 +582,7 @@
       cursor: pointer;
     }
 
-    
+
 
     @keyframes float {
       0% {
@@ -694,7 +746,7 @@
       right: 0;
       width: 150px;
       height: 100%;
-      background:none;
+      background: none;
       z-index: 2;
       pointer-events: none;
     }
@@ -721,6 +773,7 @@
       0% {
         transform: translateX(0%);
       }
+
       100% {
         transform: translateX(-50%);
       }
@@ -730,15 +783,32 @@
       0% {
         background-position: 0% center;
       }
+
       100% {
         background-position: 200% center;
       }
     }
+
+  
+
+
+   
   </style>
- <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">  
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
+<script>
+  // JavaScript to handle the transition
+  window.onload = () => {
+    // Wait for the page to load fully, then trigger the transition
+    setTimeout(() => {
+      document.querySelector('.preload-screen').style.display = 'none'; // Hide the preload screen
+      document.querySelector('.content').style.display = 'block'; // Show the content
+    }, 2000); // Duration of the animation (2 seconds)
+  };
+
+</script>
 <!-- Firebase App (core) -->
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 
@@ -749,11 +819,10 @@
   <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
   <div class="sidebar" id="sidebar">
     <br>
-    <br>
     <span id="userEmail"></span>
     <img id="userPic" class="profile-pic" style="display:none;" />
     <button id="loginBtn">Login</button>
-    <a href="#" onclick="toggleSidebar()" ><i class="fas fa-calendar-alt"></i> <b>Events</b></a>
+    <a href="#" onclick="toggleSidebar()"><i class="fas fa-calendar-alt"></i> <b>Events</b></a>
     <a href="membership.html" onclick="toggleSidebar()"><i class="fas fa-user-plus"></i> <b>Membership</b></a>
     <a href="#" onclick="toggleSidebar()"><i class="fas fa-tshirt"></i> <b>Merchandise</b></a>
     <a href="#" onclick="toggleSidebar()"><i class="fas fa-video"></i> <b>Creators</b></a>
@@ -764,10 +833,16 @@
 
   <!-- Header -->
   <header>
+
     <div class="logo">
       <img src="HARJUS-removebg-preview.png" alt="Harjus Logo" />
       <b>GAMEXD</b>
     </div>
+    <!-- Mario Animation Wrapper -->
+    <div class="mario-container">
+      <img src="mario-removebg-preview.png" alt="Mario" class="mario">
+    </div>
+
     <div class="hamburger" onclick="toggleSidebar()">
       <span></span>
       <span></span>
@@ -784,34 +859,17 @@
       <div class="rasengan"></div>
     </div>
   </div>
+  <div class="custombg">
   <div class="membership-section">
     <h2 class="membership-offer"><b>Join Our Free Membership!</b></h2>
   </div>
+</div>
   <br>
   <section id="about">
     <img src="WGAMEXD IS A GAMING & ENTERTAINING WEBSITE WHERE YOU CAN JOIN IN EVENTS AND WIN AWSM REWARDS.... (2).png"
       alt="About Us Image" class="about-us-image">
   </section>
-  <!-- <div class="latest-container">
-    <div class="latest-label"><b>*/Latest Ones!->>></b></div>
-    <div class="gamepad-illustration">
-      <img src="BrimstoGame.png" alt="Gamepad Illustration">
-    </div>
-  </div> -->
 
-  <!-- <section class="products">
-    <div class="product">
-      <div class="new-tag">NEW!</div>
-      <img src="hat.png" alt="Runic Hat">
-      <div><strong>Runic Hat</strong><br><span style="font-size: 0.8rem; color: gray;">TUNIC</span><br>$24</div>
-    </div>
-    <div class="product">
-      <img src="blanket.png" alt="Blanket">
-      <div><strong>Cozy Critters Throw Blanket</strong><br><span style="font-size: 0.8rem; color: gray;">Hollow
-          Knight</span><br>$45</div>
-    </div>
-  </section> <br> -->
- 
   <div class="tournament-grid">
 
     <!-- Tournament Card Start -->
