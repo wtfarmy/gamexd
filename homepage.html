@@ -15,16 +15,17 @@
 
     body {
       background: rgb(255, 255, 255);
-      color: #272727;
+      color: #292929;
     }
 
     header {
-      background: rgb(21, 21, 21);
+      background: rgb(32, 32, 32);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem;
       border-radius: 0 0 20px 20px;
+      box-shadow: 0 0 8px black;
     }
 
     .logo {
@@ -230,13 +231,19 @@
 
     .sidebar a {
       display: block;
-      color: white;
+      background: linear-gradient(90deg, #ff004c, #ffffff, #ffffff, #ff4000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      font-weight: 900;
+      font-family: fantasy;
+      animation: shimmer 5s linear infinite;
       text-decoration: none;
       padding: 0.8rem 0;
     }
 
     .sidebar a:hover {
-      background-color: #374151;
+      background-color: #ff0000;
     }
 
     /* .overlay {
@@ -289,9 +296,7 @@
       margin: 20px auto;
       /* Centers the card with spacing */
       padding: 20px;
-      background-color: #ffffff;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
       /* Optional hover effect */
       cursor: pointer;
@@ -362,7 +367,7 @@
     .tournament-title {
       font-size: 18px;
       font-weight: 700;
-      color: rgb(22, 22, 22);
+      color: rgb(23, 23, 23);
       margin-bottom: 10px;
     }
 
@@ -370,7 +375,7 @@
       display: flex;
       align-items: center;
       font-size: 14px;
-      color: rgb(24, 24, 24);
+      color: rgb(43, 43, 43);
       margin-bottom: 10px;
     }
 
@@ -380,10 +385,10 @@
     }
 
     .organizer {
-      background: rgb(42, 42, 42);
+      background: rgb(28, 28, 28);
       border-radius: 10px;
       padding: 10px;
-      color: white;
+      color: rgb(255, 255, 255);
       font-size: 14px;
       margin-bottom: 12px;
       display: flex;
@@ -421,24 +426,17 @@
       font-family: 'Press Start 2P', cursive;
       white-space: nowrap;
       /* Keeps text on one line */
-      background: linear-gradient(to right, #ff006f, #ffd000);
+      background: linear-gradient(to right, #ff0062, #00ffd9);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       color: transparent;
+      text-shadow: none;
       text-align: center;
       animation: pulseGlow 2s infinite alternate;
     }
 
-    @keyframes pulseGlow {
-      from {
-        text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
-      }
-
-      to {
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-      }
-    }
+   
 
 
     .footer {
@@ -532,10 +530,7 @@
       cursor: pointer;
     }
 
-    #yellowp1 {
-      color: rgb(253, 198, 0);
-      text-shadow: 0 0 6px rgb(255, 119, 0);
-    }
+    
 
     @keyframes float {
       0% {
@@ -758,7 +753,7 @@
     <span id="userEmail"></span>
     <img id="userPic" class="profile-pic" style="display:none;" />
     <button id="loginBtn">Login</button>
-    <a href="#" onclick="toggleSidebar()" id="yellowp1"><i class="fas fa-calendar-alt"></i> <b>Events</b></a>
+    <a href="#" onclick="toggleSidebar()" ><i class="fas fa-calendar-alt"></i> <b>Events</b></a>
     <a href="membership.html" onclick="toggleSidebar()"><i class="fas fa-user-plus"></i> <b>Membership</b></a>
     <a href="#" onclick="toggleSidebar()"><i class="fas fa-tshirt"></i> <b>Merchandise</b></a>
     <a href="#" onclick="toggleSidebar()"><i class="fas fa-video"></i> <b>Creators</b></a>
