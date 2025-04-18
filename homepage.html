@@ -617,63 +617,89 @@
     body.sidebar-open .characters img {
       animation-play-state: paused;
     }
-
-    .wrapper {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .boruto {
-      width: 200px;
-      /* Bigger Boruto image */
-      min-width: 200px;
-      max-width: 300px;
-    }
-
-    .boruto img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: none;
-    }
-
-    .rasengan-container {
-      width: 50px;
-      /* Smaller Rasengan size */
-      height: 50px;
-      animation: float 3s ease-in-out infinite;
-    }
-
     .rasengan {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: radial-gradient(circle at center, #00fffb 20%, #0374ff 40%, #180033 60%);
-      position: relative;
-      animation: spin 1.5s linear infinite;
-      box-shadow:
-        0 0 25px #00d0ff,
-        0 0 50px #00d0ff,
-        inset 0 0 30px #00d0ff;
-      margin: auto;
-    }
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle at center, #00f0ff, #0078ff, #001133);
+  border-radius: 50%;
+  box-shadow: 0 0 30px #d400ff, 0 0 30px #9400d8, 0 0 60px #1e00ff;
+  animation: pulse 2s infinite;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
-    .rasengan::before {
-      content: '';
-      position: absolute;
-      top: -20%;
-      left: -20%;
-      width: 140%;
-      height: 140%;
-      background: radial-gradient(circle, #00d0ff33 0%, transparent 80%);
-      border-radius: 50%;
-      filter: blur(10px);
-      animation: pulse 1.5s ease-in-out infinite;
-      z-index: -1;
-    }
+.rasengan {
+  animation: pulse 2s infinite, spin 4s linear infinite;
+}
+.rasengan-container {
+  position: fixed;
+  bottom: 100px; /* or whatever position you want */
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  animation: float 2s ease-in-out infinite;
+  cursor: pointer;
+  z-index: 1001; /* above other stuff */
+}
 
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+/* Notification Panel Styles */
+.notification-panel {
+  position: fixed;
+  bottom: 90px;
+  right: 30px;
+  background-color: #121212;
+  color: white;
+  border: 2px solid #ff00c8;
+  border-radius: 16px;
+  padding: 20px;
+  width: 250px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(255, 0, 200, 0.4);
+  display: none;
+  z-index: 1001;
+}
+
+.notification-panel h3 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  border-bottom: 1px dashed #888;
+  padding-bottom: 5px;
+}
+
+.notification-panel ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.notification-panel ul li {
+  margin-bottom: 8px;
+  font-size: 0.95em;
+}
+
+/* 
     @keyframes spin {
       0% {
         transform: rotate(0deg);
@@ -729,7 +755,7 @@
         width: 60px;
         height: 60px;
       }
-    }
+    } */
 
     .marquee {
       width: 100%;
@@ -886,7 +912,7 @@
     /* about */
     .about-section {
       background-color: #0b0b0b;
-      padding: 60px 20px;
+      padding: 30px 10px;
       color: white;
       text-align: center;
     }
@@ -895,7 +921,7 @@
       font-size: 2.5em;
       font-weight: bold;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
-      margin-bottom: 20px;
+      margin-bottom: 6px;
       background: linear-gradient(90deg, #a27184, #b80050, #869c9a);
       background-size: 200% auto;
       -webkit-background-clip: text;
@@ -904,7 +930,7 @@
     }
 
     .about-description {
-      max-width: 700px;
+      max-width: 500px;
       margin: 0 auto;
       color: #ccc;
       font-size: 1.1em;
@@ -933,6 +959,35 @@
         padding: 0 10px;
       }
     }
+
+    .rasengan-notification {
+  position: fixed;
+  bottom: 180px;
+  right: 30px;
+  background: #0e0e0e;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 136, 255, 0.6);
+  z-index: 1000;
+  width: 280px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 20px;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #fff;
+}
+
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -949,6 +1004,19 @@
   };
 
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const closeBtn = document.querySelector(".close-btn");
+    const notification = document.querySelector(".rasengan-notification");
+
+    if (closeBtn && notification) {
+      closeBtn.addEventListener("click", () => {
+        notification.style.display = "none";
+      });
+    }
+  });
+</script>
+
 <!-- Firebase App (core) -->
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 
@@ -1015,14 +1083,17 @@
       </p>
     </div>
   </div>
-  <div class="wrapper">
-    <div class="boruto">
-      <img src="Abstract_Illustrative_Stream_Studio_Logo__4_-removebg-preview (1).png" alt="Boruto">
-    </div>
-    <div class="rasengan-container">
-      <div class="rasengan"></div>
-    </div>
+  <div class="rasengan-container" onclick="toggleNotification()">
+    <div class="rasengan"></div>
   </div>
+  
+  <!-- Notification Panel -->
+  <div class="rasengan-notification">
+    <span class="close-btn">&times;</span>
+    <p>What's Upp! Buddy</p>
+  </div>
+  
+  
 
 
   <!-- <section id="about">
@@ -1080,7 +1151,13 @@
       document.getElementById('sidebar').classList.toggle('open');
       document.body.classList.toggle('sidebar-open');
     }
-  </script>
+    
+  function toggleNotification() {
+    const panel = document.getElementById('notificationPanel');
+    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+  }
+</script>
+
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
@@ -1144,4 +1221,4 @@
 
 </body>
 
-</html>
+</html> 
