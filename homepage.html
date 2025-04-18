@@ -72,12 +72,10 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem;
-      box-shadow: 0 0 18px black;
       width: 100%;
       position: relative;
       overflow: hidden;
-      border-bottom-right-radius: 18px ;
-      border-bottom-left-radius: 18px;
+      box-shadow: 0 0 12px black;
       z-index: 1;
     }
 
@@ -284,7 +282,7 @@
 
     .sidebar a {
       display: block;
-      background: linear-gradient(90deg, #ffffff, #ff006a, rgb(214, 165, 174), #ff00d4);
+      background: linear-gradient(90deg, #e4d2d2, #858282, rgb(255, 255, 254), rgb(181, 114, 114));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-size: 200% auto;
@@ -479,7 +477,7 @@
       font-family: 'Press Start 2P', cursive;
       white-space: nowrap;
       /* Keeps text on one line */
-      background: linear-gradient(to right, #9e01ff, #ff0077);
+      background: linear-gradient(to right, #ffffff, #ff005d);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -820,9 +818,9 @@
 
     .nft-section {
       text-align: center;
-      background-color: #ffffff;
+      background-color:rgb(21, 21, 21);
       padding: 40px 20px;
-      color: rgb(30, 30, 30);
+      color: rgb(255, 255, 255);
     }
 
     .nft-section h2 {
@@ -893,12 +891,14 @@
       }
 
     }
-
+.bgblack{
+  background-color: black;
+  margin: 0px;
+}
     /* about */
     .about-section {
-      background-color: #0b0b0b;
       padding: 30px 10px;
-      color: white;
+      color: rgb(17, 17, 17);
       text-align: center;
     }
 
@@ -907,18 +907,21 @@
       font-weight: bold;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       margin-bottom: 6px;
-      background: linear-gradient(90deg, #a27184, #b80050, #869c9a);
+      color: #ff4c4c;
+      /* background: linear-gradient(90deg, #312c34, #ff021f, #001eff);
       background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shineText 3s linear infinite;
+      -webkit-background-clip: text; */
+      text-align: center;
+      /* -webkit-text-fill-color: transparent;
+      animation: shineText 3s linear infinite; */
     }
 
     .about-description {
       max-width: 500px;
       margin: 0 auto;
-      color: #ccc;
+      color: #ffffff;
       font-size: 1.1em;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
       line-height: 1.6;
     }
 
@@ -1053,10 +1056,13 @@
       <div class="nft-frame"><img src="goku.jpg" alt="NFT 4" /></div>
       <div class="nft-frame hide-mobile"><img src="nft5.jpg" alt="NFT 5" /></div>
     </div>
+    </div>
     <br>
     <br>
+
+
     <!-- About Us Section -->
-    <div class="about-section">
+    <!-- <div class="about-section">
       <h2 class="about-heading"><b>
           About Us!
         </b></h2>
@@ -1066,7 +1072,10 @@
         demand. Dive into an ecosystem where your skill is your armor.
       </p>
     </div>
-  </div>
+</div> -->
+<h2 class="about-heading"><b>
+  Our MineCraft SMP
+</b></h2>
   <div class="rasengan-container" onclick="toggleNotification()">
     <div class="rasengan"></div>
   </div>
