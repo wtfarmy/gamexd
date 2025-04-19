@@ -499,64 +499,29 @@
       animation: pulseGlow 2s infinite alternate;
     }
 
-
-
-
-    .footer {
-      background-color: #111;
-      color: #ccc;
-      padding: 40px 20px 20px;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    .footer-container {
+    .mcheading {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 30px;
-      max-width: 1200px;
-      margin: auto;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
+      overflow-x: hidden;
     }
 
-    .footer h2,
-    .footer h3 {
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
-    .footer-about,
-    .footer-links,
-    .footer-contact {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .footer-links ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-links ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-links ul li a {
-      text-decoration: none;
-      color: #ccc;
-      transition: color 0.3s ease;
-    }
-
-    .footer-links ul li a:hover {
-      color: #00ffc8;
-    }
-
-    .footer-bottom {
+    .mcheadingtitle {
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      /* Responsive font size */
+      font-weight: 900;
+      font-family: 'Press Start 2P', cursive;
+      white-space: nowrap;
+      /* Keeps text on one line */
+      background: linear-gradient(to right, #cd0022, #312227);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      text-shadow: none;
       text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid #333;
-      margin-top: 20px;
-      font-size: 14px;
-      color: #777;
+      animation: pulseGlow 2s infinite alternate;
     }
 
     #loginBtn {
@@ -998,6 +963,152 @@
     .close-btn:hover {
       color: #fff;
     }
+
+    .footer {
+      background: linear-gradient(to right, #ff0000, #210000);
+      color: #fff;
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .footer-col {
+      flex: 1 1 250px;
+      margin: 20px;
+      min-width: 220px;
+    }
+
+    .footer-logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .footer p {
+      line-height: 1.6;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .footer h4 {
+      margin-bottom: 15px;
+      color: #ffffff;
+      font-size: 18px;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .footer ul li a:hover {
+      color: #fff;
+    }
+
+    .social-icons a {
+      color: #ffffff;
+      margin-right: 15px;
+      font-size: 20px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #fff;
+    }
+
+    .subscribe input[type="email"] {
+      padding: 10px;
+      border: none;
+      border-radius: 3px;
+      margin-right: 5px;
+      width: 65%;
+      max-width: 250px;
+      margin-bottom: 10px;
+    }
+
+    .subscribe button {
+      padding: 10px 15px;
+      border: none;
+      box-shadow: 0 0 12px rgb(255, 0, 0);
+      border-radius: 20x;
+      background-color: #ff0022;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .subscribe button:hover {
+      background-color: #ff0000;
+    }
+
+    .footer-bottom {
+      background-color: #0d0d0d;
+      text-align: center;
+      padding: 15px 10px;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .footer {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding: 30px 7px;
+      }
+
+      .footer-col {
+        margin: 20px 0;
+      }
+
+      .subscribe input[type="email"],
+      .subscribe button {
+        width: 90%;
+        max-width: 100%;
+      }
+
+      .subscribe {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .social-icons {
+        justify-content: center;
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-logo {
+        font-size: 24px;
+      }
+
+      .footer h4 {
+        font-size: 16px;
+      }
+
+      .social-icons a {
+        font-size: 18px;
+        margin-right: 10px;
+      }
+
+      .footer p {
+        font-size: 13px;
+      }
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -1096,9 +1207,9 @@
       </p>
     </div>
 </div> -->
-  <h2 class="about-heading"><b>
-      Our MineCraft SMP
-    </b></h2>
+<div class="mcheading">
+  <h2 class="mcheadingtitle"><b>The Dawn SMP</b></h2>
+</div>
   <div class="rasengan-container" onclick="toggleNotification()">
     <div class="rasengan"></div>
   </div>
@@ -1139,24 +1250,32 @@
     </div>
   </div>
   <br>
+ 
+  <!-- Footer Section -->
   <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-about">
-        <h2>GameXD India </h2>
-        <p>Play With Strategy</p>
-      </div>
-
-      <div class="footer-contact">
-        <h3>Contact</h3>
-        <p>Email: </p>
-        <p>Phone: +91 </p>
+    <div class="footer-col">
+      <div class="footer-logo">🎮 GameXD</div>
+      <p>GameXD brings next-level gaming experiences right to your screen. Play hard, stream harder, and stay ahead of the curve.</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-twitch"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2025 GameXD. All rights reserved.</p>
+    <div class="footer-col">
+      <h4>Join Our Squad</h4>
+      <form class="subscribe">
+        <input type="email" placeholder="Enter your email">
+        <button type="submit">Subscribe</button>
+      </form>
     </div>
   </footer>
+
+  <div class="footer-bottom">
+    © 2025 GameXD. All rights reserved. | Powered by Gamers 💥
+  </div>
+
   <script>
 
     function redirectToSecure() {
