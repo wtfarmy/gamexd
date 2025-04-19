@@ -67,7 +67,7 @@
 
     header {
       /* background: rgb(32, 32, 32);\ */
-      background: linear-gradient(40deg, rgb(21, 21, 21) 50%, rgb(255, 1, 102) 50%,#910029);
+      background: linear-gradient(40deg, rgb(21, 21, 21) 50%, rgb(255, 1, 102) 50%, #910029);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -92,8 +92,22 @@
     }
 
     .logo img {
-      height: 40px;
+      height: 35px;
       margin-right: 0.5rem;
+    }
+
+    @keyframes floatDragon {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
     }
 
     .hamburger {
@@ -318,9 +332,7 @@
     }
 
     /* Optional: Push content when sidebar opens */
-    body.sidebar-open {
-      overflow: hidden;
-    }
+
 
     .section-title {
       text-align: center;
@@ -617,89 +629,97 @@
     body.sidebar-open .characters img {
       animation-play-state: paused;
     }
+
     .rasengan {
-  width: 70px;
-  height: 70px;
-  background: radial-gradient(circle at center, #00f0ff, #0078ff, #001133);
-  border-radius: 50%;
-  box-shadow: 0 0 30px #d400ff, 0 0 30px #9400d8, 0 0 60px #1e00ff;
-  animation: pulse 2s infinite;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle at center, #00f0ff, #0078ff, #1f0033);
+      border-radius: 50%;
+      box-shadow: 0 0 30px #00c3ff, 0 0 30px #9400d8, 0 0 60px #1e00ff;
+      animation: pulse 2s infinite;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
 
-.rasengan {
-  animation: pulse 2s infinite, spin 4s linear infinite;
-}
-.rasengan-container {
-  position: fixed;
-  bottom: 100px; /* or whatever position you want */
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  animation: float 2s ease-in-out infinite;
-  cursor: pointer;
-  z-index: 1001; /* above other stuff */
-}
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
 
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .rasengan {
+      animation: pulse 2s infinite, spin 4s linear infinite;
+    }
+
+    .rasengan-container {
+      position: fixed;
+      bottom: 100px;
+      /* or whatever position you want */
+      right: 20px;
+      width: 20px;
+      height: 20px;
+      animation: float 2s ease-in-out infinite;
+      cursor: pointer;
+      z-index: 1001;
+      /* above other stuff */
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
 
 
-/* Notification Panel Styles */
-.notification-panel {
-  position: fixed;
-  bottom: 90px;
-  right: 30px;
-  background-color: #121212;
-  color: white;
-  border: 2px solid #ff00c8;
-  border-radius: 16px;
-  padding: 20px;
-  width: 250px;
-  max-height: 300px;
-  overflow-y: auto;
-  box-shadow: 0 0 20px rgba(255, 0, 200, 0.4);
-  display: none;
-  z-index: 1001;
-}
+    /* Notification Panel Styles */
+    .notification-panel {
+      position: fixed;
+      bottom: 90px;
+      right: 30px;
+      background-color: #121212;
+      color: white;
+      border: 2px solid #ff00c8;
+      border-radius: 16px;
+      padding: 20px;
+      width: 250px;
+      max-height: 300px;
+      overflow-y: auto;
+      box-shadow: 0 0 20px rgba(255, 0, 200, 0.4);
+      display: none;
+      z-index: 1001;
+    }
 
-.notification-panel h3 {
-  margin-bottom: 10px;
-  font-size: 1.2em;
-  border-bottom: 1px dashed #888;
-  padding-bottom: 5px;
-}
+    .notification-panel h3 {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+      border-bottom: 1px dashed #888;
+      padding-bottom: 5px;
+    }
 
-.notification-panel ul {
-  list-style-type: none;
-  padding-left: 0;
-}
+    .notification-panel ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
 
-.notification-panel ul li {
-  margin-bottom: 8px;
-  font-size: 0.95em;
-}
+    .notification-panel ul li {
+      margin-bottom: 8px;
+      font-size: 0.95em;
+    }
 
-/* 
+    /* 
     @keyframes spin {
       0% {
         transform: rotate(0deg);
@@ -818,7 +838,7 @@
 
     .nft-section {
       text-align: center;
-      background-color:rgb(21, 21, 21);
+      background-color: rgb(14, 14, 14);
       padding: 40px 20px;
       color: rgb(255, 255, 255);
     }
@@ -846,9 +866,10 @@
       flex: 1 1 auto;
       max-width: 120px;
       height: 220px;
+      animation: float 3s ease-in-out infinite;
       clip-path: polygon(20% 0, 80% 0, 100% 100%, 0% 100%);
       overflow: hidden;
-      border: 2px solid rgb(255, 0, 128);
+      border: 3px solid rgb(255, 0, 72);
       transition: transform 0.3s;
     }
 
@@ -891,10 +912,12 @@
       }
 
     }
-.bgblack{
-  background-color: black;
-  margin: 0px;
-}
+
+    .bgblack {
+      background-color: black;
+      margin: 0px;
+    }
+
     /* about */
     .about-section {
       padding: 30px 10px;
@@ -949,33 +972,32 @@
     }
 
     .rasengan-notification {
-  position: fixed;
-  bottom: 180px;
-  right: 30px;
-  background: #0e0e0e;
-  color: white;
-  padding: 15px 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 136, 255, 0.6);
-  z-index: 1000;
-  width: 280px;
-  font-family: 'Poppins', sans-serif;
-}
+      position: fixed;
+      bottom: 180px;
+      right: 30px;
+      background: #0e0e0e;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 136, 255, 0.6);
+      z-index: 1000;
+      width: 280px;
+      font-family: 'Poppins', sans-serif;
+    }
 
-.close-btn {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  font-size: 20px;
-  color: #aaa;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 20px;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
 
-.close-btn:hover {
-  color: #fff;
-}
-
+    .close-btn:hover {
+      color: #fff;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -1030,6 +1052,7 @@
   <!-- Header -->
   <header>
 
+
     <div class="logo">
       <img src="HARJUS-removebg-preview.png" alt="Harjus Logo" />
       <b>GAMEXD</b>
@@ -1056,13 +1079,13 @@
       <div class="nft-frame"><img src="goku.jpg" alt="NFT 4" /></div>
       <div class="nft-frame hide-mobile"><img src="nft5.jpg" alt="NFT 5" /></div>
     </div>
-    </div>
-    <br>
-    <br>
+  </div>
+  <br>
+  <br>
 
 
-    <!-- About Us Section -->
-    <!-- <div class="about-section">
+  <!-- About Us Section -->
+  <!-- <div class="about-section">
       <h2 class="about-heading"><b>
           About Us!
         </b></h2>
@@ -1073,20 +1096,20 @@
       </p>
     </div>
 </div> -->
-<h2 class="about-heading"><b>
-  Our MineCraft SMP
-</b></h2>
+  <h2 class="about-heading"><b>
+      Our MineCraft SMP
+    </b></h2>
   <div class="rasengan-container" onclick="toggleNotification()">
     <div class="rasengan"></div>
   </div>
-  
+
   <!-- Notification Panel -->
   <div class="rasengan-notification">
     <span class="close-btn">&times;</span>
     <p>What's Upp! Buddy</p>
   </div>
-  
-  
+
+
 
 
   <!-- <section id="about">
@@ -1144,12 +1167,12 @@
       document.getElementById('sidebar').classList.toggle('open');
       document.body.classList.toggle('sidebar-open');
     }
-    
-  function toggleNotification() {
-    const panel = document.getElementById('notificationPanel');
-    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-  }
-</script>
+
+    function toggleNotification() {
+      const panel = document.getElementById('notificationPanel');
+      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 
 
   <script type="module">
@@ -1214,4 +1237,4 @@
 
 </body>
 
-</html> 
+</html>
