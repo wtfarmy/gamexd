@@ -23,7 +23,6 @@
       position: relative;
       overflow: hidden;
       height: 50px;
-      /* Adjust as needed */
     }
 
     .mario {
@@ -157,32 +156,7 @@
       align-items: center;
     }
 
-    .discount {
-      margin-top: 1rem;
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border: 2px solid #000;
-      border-radius: 50px;
-      font-weight: bold;
-      font-size: 0.9rem;
-    }
-
-    .about-us-image {
-      width: 100%;
-      max-width: 500px;
-      height: auto;
-      display: block;
-      text-align: center;
-      margin: 0 auto;
-    }
-
-    .about-box h2 {
-      font-size: 1.2rem;
-      color: rgb(47, 47, 47);
-      border-bottom: 2px dashed #252525;
-      display: inline-block;
-    }
-
+  
     .latest-label {
       margin: 1rem;
       background: #22c55e;
@@ -201,42 +175,7 @@
       padding: 1rem;
     }
 
-    .product {
-      background: #f9f9f9;
-      border-radius: 10px;
-      padding: 1rem;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .product img {
-      width: 100%;
-      max-height: 120px;
-      object-fit: contain;
-      margin-bottom: 0.5rem;
-    }
-
-    .new-tag {
-      background: #4ade80;
-      color: white;
-      font-size: 0.7rem;
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-      display: inline-block;
-      margin-bottom: 0.3rem;
-    }
-
-    .floating-icon {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background: red;
-      border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
+   
     .gamepad-illustration {
       display: flex;
       justify-content: flex-end;
@@ -311,16 +250,7 @@
       background-color: #ff0000;
     }
 
-    /* .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
-      z-index: 998;
-      display: none;
-    } */
+
 
     .overlay.show {
       display: block;
@@ -379,13 +309,9 @@
     @media (max-width: 767px) {
       .tournament-card {
         width: 100%;
-        /* Takes full width on small screens */
         max-width: 100%;
-        /* Prevents it from getting too wide */
       }
     }
-
-
 
     .tournament-card:hover {
       transform: scale(1.02);
@@ -484,11 +410,9 @@
 
     .membership-offer {
       font-size: clamp(1.5rem, 4vw, 3rem);
-      /* Responsive font size */
       font-weight: 900;
       font-family: 'Press Start 2P', cursive;
       white-space: nowrap;
-      /* Keeps text on one line */
       background: linear-gradient(to right, #ffffff, #ff005d);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -509,11 +433,9 @@
 
     .mcheadingtitle {
       font-size: clamp(1.5rem, 4vw, 3rem);
-      /* Responsive font size */
       font-weight: 900;
       font-family: 'Press Start 2P', cursive;
       white-space: nowrap;
-      /* Keeps text on one line */
       background: linear-gradient(to right, #cd0022, #312227);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -547,7 +469,6 @@
 
     #userEmail {
       display: none;
-      /* hidden as requested */
     }
 
     .profile-pic {
@@ -557,8 +478,6 @@
       border: 2px solid var(--primary);
       cursor: pointer;
     }
-
-
 
     @keyframes float {
       0% {
@@ -624,14 +543,12 @@
     .rasengan-container {
       position: fixed;
       bottom: 100px;
-      /* or whatever position you want */
       right: 20px;
       width: 20px;
       height: 20px;
       animation: float 2s ease-in-out infinite;
       cursor: pointer;
       z-index: 1001;
-      /* above other stuff */
     }
 
     @keyframes float {
@@ -648,8 +565,6 @@
       }
     }
 
-
-    /* Notification Panel Styles */
     .notification-panel {
       position: fixed;
       bottom: 90px;
@@ -684,63 +599,6 @@
       font-size: 0.95em;
     }
 
-    /* 
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 0.4;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: 0.8;
-        transform: scale(1.1);
-      }
-    }
-
-    @keyframes float {
-      0% {
-        transform: translate(0, 0);
-      }
-
-      25% {
-        transform: translate(10px, -10px);
-      }
-
-      50% {
-        transform: translate(-10px, 5px);
-      }
-
-      75% {
-        transform: translate(5px, 10px);
-      }
-
-      100% {
-        transform: translate(0, 0);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .boruto {
-        width: 200px;
-      }
-
-      .rasengan-container {
-        width: 60px;
-        height: 60px;
-      }
-    } */
 
     .marquee {
       width: 100%;
@@ -896,12 +754,8 @@
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       margin-bottom: 6px;
       color: #ff4c4c;
-      /* background: linear-gradient(90deg, #312c34, #ff021f, #001eff);
-      background-size: 200% auto;
-      -webkit-background-clip: text; */
       text-align: center;
-      /* -webkit-text-fill-color: transparent;
-      animation: shineText 3s linear infinite; */
+
     }
 
     .about-description {
@@ -1109,7 +963,423 @@
         font-size: 13px;
       }
     }
+
+    /* Retro Grid Background */
+    .retro-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+      animation: gridMove 20s linear infinite;
+    }
+
+    /* Scanline Flicker */
+    .scanlines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: repeating-linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.02) 0px,
+          rgba(255, 255, 255, 0.02) 1px,
+          transparent 2px,
+          transparent 4px);
+      z-index: 1;
+      animation: flicker 0.15s infinite;
+    }
+
+    /* Retro Particles */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgb(22, 22, 22);
+      opacity: 0.6;
+      border-radius: 50%;
+      animation: floatUp linear infinite;
+    }
+
+    /* Generate 25 particles with random positions and delays */
+    .particle:nth-child(1) {
+      left: 10%;
+      animation-duration: 6s;
+      animation-delay: 0s;
+    }
+
+    .particle:nth-child(2) {
+      left: 20%;
+      animation-duration: 8s;
+      animation-delay: 1s;
+    }
+
+    .particle:nth-child(3) {
+      left: 30%;
+      animation-duration: 5s;
+      animation-delay: 2s;
+    }
+
+    .particle:nth-child(4) {
+      left: 40%;
+      animation-duration: 7s;
+      animation-delay: 3s;
+    }
+
+    .particle:nth-child(5) {
+      left: 50%;
+      animation-duration: 6s;
+      animation-delay: 4s;
+    }
+
+    .particle:nth-child(6) {
+      left: 60%;
+      animation-duration: 9s;
+      animation-delay: 5s;
+    }
+
+    .particle:nth-child(7) {
+      left: 70%;
+      animation-duration: 6s;
+      animation-delay: 6s;
+    }
+
+    .particle:nth-child(8) {
+      left: 80%;
+      animation-duration: 8s;
+      animation-delay: 7s;
+    }
+
+    .particle:nth-child(9) {
+      left: 90%;
+      animation-duration: 10s;
+      animation-delay: 8s;
+    }
+
+    .particle:nth-child(10) {
+      left: 15%;
+      animation-duration: 7s;
+      animation-delay: 9s;
+    }
+
+    .particle:nth-child(11) {
+      left: 25%;
+      animation-duration: 6s;
+      animation-delay: 10s;
+    }
+
+    .particle:nth-child(12) {
+      left: 35%;
+      animation-duration: 9s;
+      animation-delay: 11s;
+    }
+
+    .particle:nth-child(13) {
+      left: 45%;
+      animation-duration: 7s;
+      animation-delay: 12s;
+    }
+
+    .particle:nth-child(14) {
+      left: 55%;
+      animation-duration: 5s;
+      animation-delay: 13s;
+    }
+
+    .particle:nth-child(15) {
+      left: 65%;
+      animation-duration: 8s;
+      animation-delay: 14s;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: -10px;
+        opacity: 0;
+        transform: translateX(0) scale(0.8);
+      }
+
+      50% {
+        opacity: 0.6;
+        transform: translateX(2px) scale(1);
+      }
+
+      100% {
+        bottom: 110%;
+        opacity: 0;
+        transform: translateX(-2px) scale(0.5);
+      }
+    }
+
+    @keyframes flicker {
+
+      0%,
+      100% {
+        opacity: 0.1;
+      }
+
+      50% {
+        opacity: 0.2;
+      }
+    }
+
+    @keyframes gridMove {
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: 100px 100px;
+      }
+    }
+
+    .mcheading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
+      overflow-x: hidden;
+    }
+
+    .mcheadingtitle {
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-weight: 900;
+      font-family: 'Press Start 2P', cursive;
+      white-space: nowrap;
+      background: linear-gradient(to right, #cd0022, #312227);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      text-shadow: none;
+      text-align: center;
+      animation: pulseGlow 2s infinite alternate;
+    }
+
+    /* Glitch Text */
+    .glitch {
+      text-align: center;
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-weight: 900;
+      color: rgb(23, 23, 23);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      width: 100%;
+    }
+
+    .glitch::before {
+      color: rgb(255, 0, 81);
+      z-index: -1;
+      transform: translate(-2px, 0);
+      animation: glitchRed 2s infinite linear alternate-reverse;
+    }
+
+    .glitch::after {
+      color: rgb(0, 255, 128);
+      z-index: -1;
+      transform: translate(2px, 0);
+      animation: glitchBlue 2s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitchRed {
+      0% {
+        clip: rect(0, 9999px, 0, 0);
+      }
+
+      10% {
+        clip: rect(0, 9999px, 100%, 0);
+        transform: translate(-2px, -2px);
+      }
+
+      20% {
+        clip: rect(0, 9999px, 30px, 0);
+        transform: translate(-3px, 2px);
+      }
+
+      30% {
+        clip: rect(10px, 9999px, 70px, 0);
+        transform: translate(-1px, -1px);
+      }
+
+      100% {
+        clip: rect(0, 9999px, 0, 0);
+        transform: translate(-2px, 0);
+      }
+    }
+
+    @keyframes glitchBlue {
+      0% {
+        clip: rect(0, 9999px, 0, 0);
+      }
+
+      10% {
+        clip: rect(40px, 9999px, 90px, 0);
+        transform: translate(3px, -2px);
+      }
+
+      20% {
+        clip: rect(10px, 9999px, 50px, 0);
+        transform: translate(1px, 1px);
+      }
+
+      30% {
+        clip: rect(0, 9999px, 30px, 0);
+        transform: translate(2px, -1px);
+      }
+
+      100% {
+        clip: rect(0, 9999px, 0, 0);
+        transform: translate(2px, 0);
+      }
+    }
+
+    .glitch:hover {
+      color: white;
+      text-shadow:
+        -2px 0 rgb(0, 0, 0),
+        2px 0 rgb(0, 0, 0);
+    }
+    
+
+    .product-list-wrapper {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 280px;
+      overflow: hidden;
+      padding: 15px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .discount-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #e63946;
+      color: white;
+      padding: 5px 10px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .product-title {
+      font-size: 18px;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+
+    .product-price {
+      color: #ff0051;
+      font-size: 16px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 2px rgb(255, 0, 85);
+      font-weight: bold;
+    }
+
+    .product-rating {
+      margin-top: 8px;
+      color: gold;
+    }
+
+    /* Responsive Grid Layout */
+    @media (max-width: 1200px) {
+      .product-card {
+        width: 240px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .product-card {
+        width: 220px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .product-card {
+        width: 180px;
+      }
+
+      .product-title {
+        font-size: 16px;
+      }
+
+      .product-price {
+        font-size: 14px;
+      }
+
+      .product-rating {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-card {
+        width: 150px;
+      }
+
+      .product-title {
+        font-size: 14px;
+      }
+
+      .product-price {
+        font-size: 12px;
+      }
+
+      .product-rating {
+        font-size: 12px;
+      }
+    }
+
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -1137,10 +1407,8 @@
     }
   });
 </script>
-
 <!-- Firebase App (core) -->
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-
 <!-- Firebase Auth -->
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 
@@ -1155,20 +1423,15 @@
     <a href="membership.html" onclick="toggleSidebar()"><i class="fas fa-user-plus"></i> <b>Membership</b></a>
     <a href="#" onclick="toggleSidebar()"><i class="fas fa-tshirt"></i> <b>Merchandise</b></a>
     <a href="#" onclick="toggleSidebar()"><i class="fas fa-video"></i> <b>Creators</b></a>
-
     <br>
     <button id="logoutBtn" onclick="logout()">Logout</button>
   </div>
-
-  <!-- Header -->
   <header>
-
-
     <div class="logo">
       <img src="HARJUS-removebg-preview.png" alt="Harjus Logo" />
       <b>GAMEXD</b>
     </div>
-    <!-- Mario Animation Wrapper -->
+
     <div class="mario-container">
       <img src="mario-removebg-preview.png" alt="Mario" class="mario">
     </div>
@@ -1192,45 +1455,105 @@
     </div>
   </div>
   <br>
+
   <br>
 
+  <div class="particles">
 
-  <!-- About Us Section -->
-  <!-- <div class="about-section">
-      <h2 class="about-heading"><b>
-          About Us!
-        </b></h2>
-      <p class="about-description">
-        GAMEXD Is a gaming & entertainment platform.
-        We are shaping the future of gaming by promotion free tournaments and presenting Anime merchandie in your
-        demand. Dive into an ecosystem where your skill is your armor.
-      </p>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+  <h1 class="glitch" data-text="AnimeStore">AnimeStore</h1>
+
+  <br>
+  
+  
+  <div class="product-list-wrapper">
+    <!-- Product 1 -->
+    <div class="product-card">
+      <div class="discount-badge">30% OFF</div>
+      <img src="aGjqrnn_700bwp.webp" alt="Product 1">
+      <div class="product-title">Anime Stickers</div>
+      <div class="product-price">49</div>
+      <div class="product-rating">⭐⭐⭐⭐☆</div>
     </div>
-</div> -->
-<div class="mcheading">
-  <h2 class="mcheadingtitle"><b>The Dawn SMP</b></h2>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <div class="discount-badge">30% OFF</div>
+      <img src="crunchyroll.png" alt="Product 2">
+      <div class="product-title">Crunchy Roll Membership</div>
+      <div class="product-price">40</div>
+      <div class="product-rating">⭐⭐⭐⭐⭐</div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+      <div class="discount-badge">30% OFF</div>
+      <img src="Abstract_Illustrative_Stream_Studio_Logo__4_-removebg-preview (1).png" alt="Product 3">
+      <div class="product-title">Naruto Theme Box</div>
+      <div class="product-price">120</div>
+      <div class="product-rating">⭐⭐⭐⭐☆</div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card">
+      <div class="discount-badge">30% OFF</div>
+      <img src="Untitled design (1).png" alt="Product 4">
+      <div class="product-title">Manga!</div>
+      <div class="product-price">30</div>
+      <div class="product-rating">⭐⭐⭐⭐⭐</div>
+    </div>
 </div>
   <div class="rasengan-container" onclick="toggleNotification()">
     <div class="rasengan"></div>
   </div>
 
-  <!-- Notification Panel -->
+
   <div class="rasengan-notification">
     <span class="close-btn">&times;</span>
-    <p>What's Upp! Buddy</p>
+    <p>What's Upp! Naman Ch@kke!</p>
   </div>
 
 
+  <br>
 
+  <div class="particles">
 
-  <!-- <section id="about">
-    <img src="WGAMEXD IS A GAMING & ENTERTAINING WEBSITE WHERE YOU CAN JOIN IN EVENTS AND WIN AWSM REWARDS.... (2).png"
-      alt="About Us Image" class="about-us-image">
-  </section> -->
-
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+  <div class="mcheading">
+    <h2 class="mcheadingtitle"><b>The Dawn SMP</b></h2>
+  </div>
   <div class="tournament-grid">
 
-    <!-- Tournament Card Start -->
     <div class="tournament-card">
       <div class="tournament-image">
         <img src="mcserver.jpg" alt="Free Fire Tournament">
@@ -1250,12 +1573,12 @@
     </div>
   </div>
   <br>
- 
-  <!-- Footer Section -->
+
   <footer class="footer">
     <div class="footer-col">
       <div class="footer-logo">🎮 GameXD</div>
-      <p>GameXD brings next-level gaming experiences right to your screen. Play hard, stream harder, and stay ahead of the curve.</p>
+      <p>GameXD brings next-level gaming experiences right to your screen. Play hard, stream harder, and stay ahead of
+        the curve.</p>
       <div class="social-icons">
         <a href="#"><i class="fab fa-discord"></i></a>
         <a href="#"><i class="fab fa-twitch"></i></a>
