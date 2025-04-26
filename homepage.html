@@ -66,7 +66,7 @@
 
     header {
       /* background: rgb(32, 32, 32);\ */
-      background: linear-gradient(40deg, rgb(21, 21, 21) 50%, rgb(255, 1, 102) 50%, #910029);
+      background: linear-gradient(40deg, rgb(21, 21, 21) 50%, rgb(255, 0, 81) 50%, #3e00f9);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -81,7 +81,7 @@
     .logo {
       display: flex;
       align-items: center;
-      background: linear-gradient(90deg, #ff005d, #ffffff, #ecc5c5, #825d82);
+      background: linear-gradient(90deg, #ff005d, #5900ff, #ecc5c5, #825d82);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-size: 200% auto;
@@ -385,7 +385,7 @@
     }
 
     .register-btn {
-      background: linear-gradient(to bottom right, #ff2347, #f948ff);
+      background: linear-gradient(to bottom right, #00d5ff, #ff0044);
       color: #ffffff;
       border: none;
       padding: 10px;
@@ -661,7 +661,7 @@
 
     .nft-section {
       text-align: center;
-      background-color: rgb(14, 14, 14);
+      background-color: rgb(22, 22, 22);
       padding: 40px 20px;
       color: rgb(255, 255, 255);
     }
@@ -972,8 +972,8 @@
       width: 100%;
       height: 100%;
       background-image:
-        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        linear-gradient(rgba(206, 204, 204, 0.092) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(181, 181, 181, 0.118) 1px, transparent 1px);
       background-size: 40px 40px;
       z-index: 0;
       animation: gridMove 20s linear infinite;
@@ -987,8 +987,8 @@
       height: 100%;
       width: 100%;
       background: repeating-linear-gradient(to bottom,
-          rgba(255, 255, 255, 0.02) 0px,
-          rgba(255, 255, 255, 0.02) 1px,
+          rgba(0, 0, 0, 0.921) 0px,
+          rgb(0, 0, 0) 1px,
           transparent 2px,
           transparent 4px);
       z-index: 1;
@@ -1376,7 +1376,27 @@
         font-size: 12px;
       }
     }
+    .intro-video {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      overflow: hidden;
+    }
 
+    video {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      aspect-ratio: 16 / 9;
+    }
+
+    @media (max-width: 768px) {
+      .intro-video video {
+        width: 100vw;
+        height: auto;
+      }
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -1441,36 +1461,56 @@
       <span></span>
     </div>
   </header>
-  <div class="nft-section">
-    <div class="membership-section">
-      <h2 class="membership-offer"><b>Welcome Gamers</b></h2>
-    </div>
-    <div class="nft-frame-container">
-      <div class="nft-frame hide-mobile"><img src="nft3.jpg" alt="NFT 1" /></div>
-      <div class="nft-frame"><img src="jinwoo.jpg" alt="NFT 2" /></div>
-      <div class="nft-frame center"><img src="ghostofuchiha.jpg" alt="NFT 3" /></div>
-      <div class="nft-frame"><img src="goku.jpg" alt="NFT 4" /></div>
-      <div class="nft-frame hide-mobile"><img src="nft5.jpg" alt="NFT 5" /></div>
-    </div>
-    <div class="scalelines"></div>
-    <div class="retrobg"></div>
+<div class="nft-section">
+  <div class="membership-section">
+    <h2 class="membership-offer"><b>Welcome Gamers</b></h2>
   </div>
+  <div class="nft-frame-container">
+    <div class="nft-frame hide-mobile"><img src="nft4.jpg" alt="NFT 1" /></div>
+    <div class="nft-frame"><img src="nft5.jpg" alt="NFT 2" /></div>
+    <div class="nft-frame center"><img src="ghostofuchiha.jpg" alt="NFT 3" /></div>
+    <div class="nft-frame"><img src="nft3.jpg" alt="NFT 4" /></div>
+    <div class="nft-frame hide-mobile"><img src="jinwoo.jpg"alt="NFT 2"/></div>
+  </div>
+  <div class="scalelines"></div>
+  <div class="retrobg"></div>
+</div>
+
   <div class="rasengan-container" onclick="toggleNotification()">
     <div class="rasengan"></div>
   </div>
   <div class="rasengan-notification">
     <span class="close-btn">&times;</span>
-    <p>Yoo Rasengan Thara Mu Pe Rasengan!</p>
+    <p>New Tournament On 28th April #jointhebattle</p>
   </div>
-
-  <br>
-  <h1 class="glitch" data-text="-GameZone>"> -GameZone></h1>
+  <h1 class="glitch" data-text="GameArc"> GameArc</h1>
   <br>
   <div class="tournament-grid">
-
     <div class="tournament-card">
       <div class="tournament-image">
-        <img src="minecraft.jpg" >
+        <video autoplay muted playsinline loop>
+          <source src="WhatsApp Video 2025-04-26 at 11.07.25 PM.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="badge">Featured</div>
+      </div>
+      <div class="tournament-content">
+        <div class="game-label">Free Fire MAX</div>
+        <div class="tournament-title">Khelega Free Fire!</div>
+        <div class="calendar">Registration Started</div>
+        <div class="organizer">
+          <div>Powered By</div>
+          <div><strong>GAMEXD</strong></div>
+        </div>
+        <button class="register-btn" onclick="redirectToSecure()">Registration</button>
+      </div>
+    </div>
+    <div class="tournament-card">
+      <div class="tournament-image">
+        <video autoplay muted playsinline loop>
+          <source src="WhatsApp Video 2025-04-26 at 11.07.25 PM.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <div class="badge">Featured</div>
       </div>
       <div class="tournament-content">
@@ -1487,11 +1527,10 @@
     </div>
   </div>
   <br>
-  <br>
+<!--   
   <h1 class="glitch" data-text="AnimeStore">AnimeStore</h1>
   <br>
   <div class="product-list-wrapper">
-    <!-- Product 3 -->
     <div class="product-card">
       <div class="discount-badge">30% OFF</div>
       <img src="Abstract_Illustrative_Stream_Studio_Logo__4_-removebg-preview (1).png" alt="Product 3">
@@ -1502,7 +1541,7 @@
 
     
 </div>
-<br>
+<br> -->
   <footer class="footer">
     <div class="footer-col">
       <div class="footer-logo">🎮 GameXD</div>
