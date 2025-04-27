@@ -145,7 +145,7 @@
 
   <div class="container">
     <h2>Register for the Tournament</h2>
-    <form action="https://formsubmit.co/roqfatma786@gmail.com" method="POST">
+    <form id="tournament-form" action="https://formsubmit.co/roqfatma786@gmail.com" method="POST">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_next" value="homepage.html">
@@ -191,6 +191,27 @@
         uidInput.value = '';
       }
     }
+
+    // Prevent default form submission and redirect to homepage
+    document.getElementById('tournament-form').addEventListener('submit', function(event) {
+      event.preventDefault();  // Prevent default form submit
+
+      // Create a FormData object from the form
+      const formData = new FormData(this);
+
+      // Send form data using Fetch API (AJAX request)
+      fetch(this.action, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        // Redirect to homepage.html after successful submission
+        window.location.href = 'homepage.html';
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
   </script>
 
 </body>
