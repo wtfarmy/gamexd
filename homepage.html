@@ -1397,6 +1397,83 @@
         height: auto;
       }
     }
+
+    /* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Popup Box */
+.popup-box {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 15px;
+  text-align: center;
+  width: 90%;
+  max-width: 350px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  animation: popup 0.3s ease;
+}
+
+@keyframes popup {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.popup-icons img {
+  width: 40px;
+  margin: 10px;
+}
+
+.popup-success-icon img {
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+.popup-options {
+  text-align: left;
+  margin: 20px 0;
+}
+
+.popup-options label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Buttons */
+.btn-yes, .btn-ok {
+  background: linear-gradient( to right, #fee81e,#fa0d4c);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.btn-later {
+  background: #eee;
+  color: #333;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+}
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -1475,14 +1552,36 @@
     <div class="retrobg"></div>
   </div>
 </div>
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <div class="popup-icons">
+      <img src="1000001908_79329a9b1f3f1abc226717bfe195d92b-4_22_2025, 3_13_32 AM (1).png" alt="Notification Icon" />
+    </div>
+    <h2>Welcome Buddy</h2>
+    <p>Want To Play eSports Matches</p>
+    <button class="btn-yes" onclick="window.location.href='tournament.html'">Let's Go</button>
+    <button class="btn-later" onclick="closePopup()">Close</button>
+  </div>
+</div>
 
+<div class="popup-overlay" id="popup-success" style="display: none;">
+  <div class="popup-box">
+    <div class="popup-success-icon">
+      <img src="https://img.icons8.com/ios-filled/50/4CAF50/ok--v1.png" alt="Success Check" />
+    </div>
+    <h2>All Enabled</h2>
+    <p>Push Notification enabled</p>
+    <p><small>You can change the option anytime at the communication preference page</small></p>
+    <button class="btn-ok" onclick="closeSuccess()">OK</button>
+  </div>
+</div>
   <div class="rasengan-container" onclick="toggleNotification()">
     <div class="rasengan"></div>
   </div>
-  <div class="rasengan-notification">
+  <!-- <div class="rasengan-notification">
     <span class="close-btn">&times;</span>
     <p>New Tournament On 28th April #jointhebattle</p>
-  </div>
+  </div> -->
   <br>
   <h1 class="glitch" data-text="GameArc"> GameArc</h1>
   <div class="tournament-grid">
@@ -1645,7 +1744,20 @@
 
   </script>
 
+<script>
+  function enableNotifications() {
+  document.getElementById('popup').style.display = 'none';
+  document.getElementById('popup-success').style.display = 'flex';
+}
 
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+function closeSuccess() {
+  document.getElementById('popup-success').style.display = 'none';
+}
+</script>
 </body>
 
 </html>
