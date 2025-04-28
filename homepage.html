@@ -17,6 +17,12 @@
       background: linear-gradient(to right,rgba(0, 255, 242, 0.03),#ffffff,#ff00510c);
       color: black;
     }
+    @media (max-width: 600px) {
+  .search-container input {
+    display: block;
+    width: 100%;
+  }
+}
 
     .mario-container {
       flex: 1;
@@ -1507,11 +1513,6 @@
   filter: brightness(0) invert(1); /* make icon white if it's black */
 }
 
-@media (max-width: 600px) {
-  .search-container input {
-    display: none;
-  }
-}
 
 @media (min-width: 601px) {
   .search-container input {
@@ -1585,9 +1586,7 @@
 
 /* 🖥 Desktop view (≥600px) */
 @media (min-width: 601px) {
-  .search-container input {
-    display: block;
-  }
+ 
 
   .search-container button {
     background: none;
